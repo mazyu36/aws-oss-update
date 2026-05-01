@@ -1,0 +1,19 @@
+{
+  "github": {
+    "owner": "aws",
+    "repository": "aws-cdk",
+    "displayName": "AWS CDK",
+    "shortName": "cdk",
+    "targetBranch": "main"
+  },
+  "processing": {
+    "maxRetries": 3,
+    "retryIntervalMs": 30000,
+    "includePrerelease": true
+  },
+  "site": {
+    "baseUrl": "",
+    "title": "AWS OSS Release Notes",
+    "description": "AWS OSS リリースの解説サイト"
+  }
+}

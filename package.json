@@ -1,0 +1,25 @@
+{
+  "name": "aws-oss-release-monitor",
+  "version": "1.0.0",
+  "description": "AWS OSS Release Monitor - Automated release explanation generator",
+  "type": "module",
+  "main": "src/check-releases.js",
+  "scripts": {
+    "check": "node src/check-releases.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "aws",
+    "release-monitor",
+    "github-actions"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

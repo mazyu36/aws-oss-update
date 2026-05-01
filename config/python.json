@@ -1,0 +1,19 @@
+{
+  "github": {
+    "owner": "strands-agents",
+    "repository": "sdk-python",
+    "displayName": "Python SDK",
+    "shortName": "python",
+    "targetBranch": "main"
+  },
+  "processing": {
+    "maxRetries": 3,
+    "retryIntervalMs": 30000,
+    "includePrerelease": true
+  },
+  "site": {
+    "baseUrl": "",
+    "title": "Strands Agents SDK Release Notes",
+    "description": "Strands Agents SDKリリースの解説サイト"
+  }
+}

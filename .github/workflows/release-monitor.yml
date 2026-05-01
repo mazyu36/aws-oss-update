@@ -1,0 +1,329 @@
+name: Release Monitor
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      config:
+        description: '対象の設定名（例: python, cdk）。空欄で全リポジトリ'
+        required: false
+        type: string
+      version:
+        description: '特定バージョンを処理（config 指定時のみ。空欄で自動検出）'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+  id-token: write
+
+jobs:
+  # config/*.json を列挙してマトリックスを動的生成
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      configs: ${{ steps.list.outputs.configs }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        run: |
+          if [ -n "${{ inputs.config }}" ]; then
+            echo "configs=[\"${{ inputs.config }}\"]" >> $GITHUB_OUTPUT
+          else
+            CONFIGS=$(ls config/*.json | xargs -n1 basename | sed 's/\.json$//' | jq -R -s -c 'split("\n")[:-1]')
+            echo "configs=$CONFIGS" >> $GITHUB_OUTPUT
+          fi
+
+  check-and-generate:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 1  # Claude Code Action の競合回避
+      matrix:
+        config: ${{ fromJson(needs.discover.outputs.configs) }}
+    env:
+      ANTHROPIC_BEDROCK_BASE_URL: "https://bedrock-runtime.us-west-2.amazonaws.com"
+      STRANDS_CONFIG: ${{ matrix.config }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Check for new releases
+        id: check
+        run: bun run check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine version to process
+        id: version
+        run: |
+          if [ -n "${{ inputs.version }}" ] && [ -n "${{ inputs.config }}" ]; then
+            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
+            echo "has_version=true" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.check.outputs.has_new_releases }}" == "true" ]; then
+            FIRST_VERSION=$(echo "${{ steps.check.outputs.versions }}" | cut -d',' -f1)
+            echo "version=$FIRST_VERSION" >> $GITHUB_OUTPUT
+            echo "has_version=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_version=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check for existing PR or branch
+        id: check_existing
+        if: steps.version.outputs.has_version == 'true'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          SHORT_NAME="${{ steps.check.outputs.short_name }}"
+          BRANCH_NAME="release/${SHORT_NAME}-${VERSION}"
+
+          if git ls-remote --heads origin "${BRANCH_NAME}" | grep -q "${BRANCH_NAME}"; then
+            echo "Branch ${BRANCH_NAME} already exists. Skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          OPEN_PR=$(gh pr list --repo ${{ github.repository }} --state open --head "${BRANCH_NAME}" --json number --jq '.[0].number')
+          if [ -n "$OPEN_PR" ]; then
+            echo "Open PR #${OPEN_PR} already exists for ${VERSION}. Skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "No existing branch or PR found. Proceeding."
+          echo "skip=false" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure AWS Credentials (OIDC)
+        if: steps.version.outputs.has_version == 'true' && steps.check_existing.outputs.skip != 'true'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: us-west-2
+
+      - name: Generate release article with Claude
+        if: steps.version.outputs.has_version == 'true' && steps.check_existing.outputs.skip != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          use_bedrock: "true"
+          claude_args: |
+            --model us.anthropic.claude-opus-4-5-20251101-v1:0
+            --allowedTools "Bash(gh release:*),Bash(gh pr:*),Bash(gh pr merge:*),Bash(gh api:*),Bash(git:*),Read,Write,Edit"
+          prompt: |
+            ${{ steps.check.outputs.display_name }} ${{ steps.version.outputs.version }} のリリース解説記事を生成してください。
+
+            ## リポジトリ情報
+            - リポジトリ: ${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }}
+            - バージョン: ${{ steps.version.outputs.version }}
+            - 短縮名: ${{ steps.check.outputs.short_name }}
+            - 表示名: ${{ steps.check.outputs.display_name }}
+            - リリースタイプ: ${{ steps.check.outputs.release_type }}
+
+            ## Step 1: リリース情報の取得
+            ```bash
+            gh release view ${{ steps.version.outputs.version }} --repo ${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }} --json tagName,name,body,publishedAt
+            ```
+
+            ## Step 2: リリースノートの分析
+
+            ### 対象とするもの（必ず含める）
+            - **feat / Features**: 新機能
+            - **fix / Bug Fixes**: バグ修正
+            - **BREAKING CHANGE / BREAKING CHANGES**: 破壊的変更
+            - **Alpha modules**: （存在する場合）alpha モジュールの新機能・変更 ← このセクションが対象リポジトリのリリースノートにあれば必ず含める
+
+            ### 対象外（除外する）
+            - **chore**: 依存関係更新、CI/CD変更など
+            - **docs**: ドキュメントのみの変更
+            - **refactor**: 機能変更を伴わないリファクタリング
+            - **test**: テストのみの変更
+            - **style**: コードスタイル変更
+
+            ### 全ての変更が対象外の場合（メンテナンスリリース）
+            全ての PR が chore/docs/refactor/test/style に該当し、feat/fix/BREAKING CHANGE が含まれない場合は、**メンテナンスリリース**として簡潔な記事を作成してください。ユーザーへの確認は不要です。
+
+            **メンテナンスリリース用フォーマット:**
+            ```markdown
+            ---
+            title: "${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }}"
+            version: "${{ steps.version.outputs.version }}"
+            repository: "${{ steps.check.outputs.short_name }}"
+            repositoryDisplayName: "${{ steps.check.outputs.display_name }}"
+            releaseType: "${{ steps.check.outputs.release_type }}"
+            date: YYYY-MM-DD
+            summary: "メンテナンスリリース: 依存関係の更新、CI/CD の改善などが含まれます。"
+            releaseUrl: "https://github.com/${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }}/releases/tag/${{ steps.version.outputs.version }}"
+            ---
+
+            ## 概要
+
+            このリリースはメンテナンスリリースです。新機能やバグ修正は含まれていませんが、依存関係の更新や CI/CD の改善などが行われています。
+
+            **リリース:** [${{ steps.version.outputs.version }}](https://github.com/${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }}/releases/tag/${{ steps.version.outputs.version }})
+
+            ## 変更内容
+
+            - （各 PR の内容を箇条書きで簡潔に記載）
+
+            ## まとめ
+
+            依存関係の更新やメンテナンス作業が行われたリリースです。
+            ```
+
+            ## Step 3: 重要なPRの詳細確認
+            各 feat/fix PR について:
+            ```bash
+            gh pr view <PR番号> --repo ${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }} --json title,body,files
+            ```
+
+            特に新しい L2 コンストラクト・新しいプロパティ・新機能の場合は、PR 本文とファイル差分からインターフェース定義や設定オプションを漏れなく抽出してください。
+
+            ## Step 4: 記事の作成
+
+            ### フロントマター形式
+            **重要: date フィールドには、Step 1 で取得した publishedAt の日付部分（YYYY-MM-DD）を使用してください。現在の日付ではなく、リリースが公開された日付です。**
+
+            ```yaml
+            ---
+            title: "${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }}"
+            version: "${{ steps.version.outputs.version }}"
+            repository: "${{ steps.check.outputs.short_name }}"
+            repositoryDisplayName: "${{ steps.check.outputs.display_name }}"
+            releaseType: "${{ steps.check.outputs.release_type }}"
+            date: YYYY-MM-DD  # ← publishedAt から抽出
+            summary: ""  # ← 2-3文の要約
+            releaseUrl: "https://github.com/${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }}/releases/tag/${{ steps.version.outputs.version }}"
+            ---
+            ```
+
+            ### 記事構成（統一フォーマット）
+
+            ## 概要
+
+            このリリースの主要な変更点を2-3文で要約。
+
+            **リリース:** [${{ steps.version.outputs.version }}](https://github.com/${{ steps.check.outputs.owner }}/${{ steps.check.outputs.repository }}/releases/tag/${{ steps.version.outputs.version }})
+
+            ## 新機能
+
+            ### 機能名 ([#PR番号](PRへのリンク))
+
+            **この機能でできること:**
+            - 機能の説明（1-2文）
+
+            **使用例:**
+
+            ```（リポジトリに応じた言語。Python SDK なら python、TypeScript SDK/CDK なら typescript）
+            # 実際に動作するサンプルコード
+            ```
+
+            **ポイント:**
+            - 使用上の注意点やベストプラクティス
+            - 新しい L2/プロパティの場合は、コード例の中のコメントで各プロパティ・デフォルト値・設定オプションを網羅的に説明
+
+            ---
+
+            ## バグ修正
+
+            ### 修正内容 ([#PR番号](PRへのリンク))
+            - 何が修正されたか
+            - 影響を受けていた状況
+            - 修正後の正しい使い方のコード例（該当する場合）
+
+            ## Alpha モジュール（リリースノートに該当セクションがある場合のみ）
+
+            ### 変更内容 ([#PR番号](PRへのリンク))
+            - 対象の alpha モジュール
+            - 変更・追加された機能の説明とコード例
+
+            ## 破壊的変更（該当する場合のみ）
+
+            ### 変更内容 ([#PR番号](PRへのリンク))
+
+            **変更前:**
+            ```
+            # 旧コード
+            ```
+
+            **変更後:**
+            ```
+            # 新コード
+            ```
+
+            **移行方法:**
+            - 具体的な移行手順
+
+            ## まとめ
+
+            このリリースの総括（1-2文）
+
+            ---
+
+            ## 重要なルール
+
+            1. **タイトルにはPRリンクを含める**: 各セクションの見出しに必ず `([#番号](URL))` 形式でリンクを付ける
+            2. **サンプルコードは必須**: 新機能には必ず動作するサンプルコードを含める
+            3. **chore/docs/refactor/testは除外**: 機能的な変更がないものは記載しない
+            4. **日本語で記述**: 全て日本語で記述する
+            5. **フォーマット統一**: 上記の構成を必ず守る
+            6. **英単語の前後に半角スペース**: 日本語と英単語の間には必ず半角スペースを入れる（例: 「新しい Agent 機能」「Python SDK の更新」）
+            7. **Alpha modules は必ず確認**: リリースノートの末尾に「## Alpha modules」セクションがある場合は必ず記事に含める
+
+            ## Step 5: ファイル作成
+            ファイル名: `site/src/content/releases/<short_name>-<version（.を-に変換）>.md`
+            例:
+            - python-v1-21-0.md
+            - cdk-v2-226-0.md
+            - cdk-v2-226-0-alpha-0.md
+
+            ## Step 6: ブランチ作成とPR作成
+            **重要: mainブランチに直接コミットしないでください。必ず新しいブランチを作成してPRを作成してください。**
+
+            1. 新しいブランチを作成:
+            ```bash
+            git checkout -b release/${{ steps.check.outputs.short_name }}-${{ steps.version.outputs.version }}
+            ```
+
+            2. 変更をコミット:
+            ```bash
+            git add .
+            git commit -m "feat: add ${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }} release article"
+            ```
+
+            3. ブランチをプッシュ:
+            ```bash
+            git push origin release/${{ steps.check.outputs.short_name }}-${{ steps.version.outputs.version }}
+            ```
+
+            4. Pull Requestを作成:
+            **重要: 以下のコマンドをそのまま実行してください。PR本文は変更せず、この形式を厳守してください。PRへのリンクを本文に含めると、リンク先のPRに紐づけられて表示されてしまいます。**
+            ```bash
+            gh pr create --title "feat: ${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }} リリース記事追加" --body "$(cat <<'EOF'
+            ## 概要
+            ${{ steps.check.outputs.display_name }} ${{ steps.version.outputs.version }} のリリース解説記事を追加しました。
+
+            cc @mazyu36
+            EOF
+            )"
+            ```
+
+            5. Auto-mergeを有効化:
+            ```bash
+            gh pr merge --auto --squash
+            ```
+
+      - name: No new releases
+        if: steps.version.outputs.has_version != 'true'
+        run: echo "No new releases to process for ${{ matrix.config }}"

@@ -1,0 +1,1291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const baseUrl = import.meta.env.BASE_URL;
+const releases = await getCollection('releases');
+const sortedReleases = releases.sort((a, b) =>
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// リポジトリリスト
+const repositories = [
+  { id: 'sdk-python', name: 'Strands Python' },
+  { id: 'sdk-typescript', name: 'Strands TypeScript' },
+  { id: 'tools', name: 'Strands Tools' },
+  { id: 'agentcore-python', name: 'AgentCore Python' },
+  { id: 'agentcore-typescript', name: 'AgentCore TypeScript' },
+  { id: 'cdk', name: 'AWS CDK' },
+];
+
+// 年月を抽出（YYYY-MM形式）
+const allMonths = [...new Set(
+  sortedReleases.map(r => {
+    const d = new Date(r.data.date);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+  })
+)].sort().reverse();
+
+// 月を年ごとにグループ化
+const monthsByYear: Record<string, string[]> = {};
+allMonths.forEach(m => {
+  const year = m.split('-')[0];
+  if (!monthsByYear[year]) monthsByYear[year] = [];
+  monthsByYear[year].push(m);
+});
+
+// ページネーション設定
+const INITIAL_DISPLAY_COUNT = 12;
+const LOAD_MORE_COUNT = 12;
+
+---
+
+<BaseLayout title="Home">
+  <section class="hero hero-compact">
+    <h1 class="hero-title">
+      AWS OSS
+      <span class="hero-accent">リリース解説</span>
+    </h1>
+    <p class="hero-description">
+      AWS 関連 OSS のリリース内容を AI がわかりやすく解説します
+    </p>
+    <div class="hero-notice">
+      <span class="notice-icon">⚠</span>
+      <span class="notice-text">
+        本サイトの解説は AI が生成しています。ハルシネーションにより誤りが含まれる可能性があるため、正確な情報は公式リリースノートをご確認ください。
+      </span>
+    </div>
+  </section>
+
+  <section class="releases-section">
+    <!-- Inline Filters -->
+    <div class="inline-filters">
+      <div class="filter-group">
+        <span class="filter-label">リポジトリ:</span>
+        <div class="repo-tabs" id="repoTabs">
+          <button class="repo-tab active" data-repo="all">すべて</button>
+          {repositories.map(r => (
+            <button class="repo-tab" data-repo={r.id}>{r.name}</button>
+          ))}
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">期間:</span>
+        <div class="period-filter" id="periodFilter">
+          <button class="period-btn active" data-period="all">すべて</button>
+          <div class="period-range">
+            <div class="period-dropdown">
+              <button class="period-dropdown-btn" id="startMonthBtn">
+                <span id="startMonthLabel">開始月</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="period-dropdown-menu" id="startMonthMenu">
+                {Object.entries(monthsByYear).map(([year, months]) => (
+                  <div class="period-year-group">
+                    <span class="period-year-label">{year}年</span>
+                    <div class="period-months">
+                      {months.map(m => (
+                        <button class="period-month-btn start-month-btn" data-month={m}>
+                          {parseInt(m.split('-')[1])}月
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <span class="period-separator">〜</span>
+            <div class="period-dropdown">
+              <button class="period-dropdown-btn" id="endMonthBtn">
+                <span id="endMonthLabel">終了月</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="period-dropdown-menu" id="endMonthMenu">
+                {Object.entries(monthsByYear).map(([year, months]) => (
+                  <div class="period-year-group">
+                    <span class="period-year-label">{year}年</span>
+                    <div class="period-months">
+                      {months.map(m => (
+                        <button class="period-month-btn end-month-btn" data-month={m}>
+                          {parseInt(m.split('-')[1])}月
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <div class="layout-controls">
+          <button class="layout-btn active" id="layoutGrid" aria-label="グリッド表示" title="グリッド表示">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="1" y="1" width="6" height="6" rx="1"/>
+              <rect x="9" y="1" width="6" height="6" rx="1"/>
+              <rect x="1" y="9" width="6" height="6" rx="1"/>
+              <rect x="9" y="9" width="6" height="6" rx="1"/>
+            </svg>
+          </button>
+          <button class="layout-btn" id="layoutList" aria-label="リスト表示" title="リスト表示">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="1" y="2" width="14" height="3" rx="1"/>
+              <rect x="1" y="7" width="14" height="3" rx="1"/>
+              <rect x="1" y="12" width="14" height="3" rx="1"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active filter indicator -->
+    <div class="active-filter-bar" id="activeFilterBar" style="display: none;">
+      <span class="active-filter-text" id="activeFilterText"></span>
+      <button class="clear-filter-btn" id="clearFilterBtn">クリア</button>
+    </div>
+
+    {sortedReleases.length === 0 ? (
+      <div class="empty-state">
+        <div class="empty-icon">◇</div>
+        <p class="empty-text">まだリリース解説がありません</p>
+        <p class="empty-subtext">新しいリリースが検出されると自動的に追加されます</p>
+      </div>
+    ) : (
+      <>
+        <div class="releases-grid" id="releasesGrid" data-total={sortedReleases.length} data-initial={INITIAL_DISPLAY_COUNT} data-loadmore={LOAD_MORE_COUNT}>
+          {sortedReleases.map((release, index) => (
+            <a href={`${baseUrl}releases/${release.slug}`} class="release-card" data-month={`${new Date(release.data.date).getFullYear()}-${String(new Date(release.data.date).getMonth() + 1).padStart(2, '0')}`} data-repo={release.data.repository} data-index={index} style={`--delay: ${Math.min(index, INITIAL_DISPLAY_COUNT - 1) * 0.05}s`}>
+              <span class="card-date">
+                {new Date(release.data.date).toLocaleDateString('ja-JP', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}
+              </span>
+              <div class="card-main">
+                <div class="card-header">
+                  <span class="repo-badge" data-repo={release.data.repository}>{release.data.repositoryDisplayName}</span>
+                  {release.data.releaseType === 'prerelease' && (
+                    <span class="card-badge prerelease">PRE</span>
+                  )}
+                  {release.data.releaseType === 'alpha' && (
+                    <span class="card-badge prerelease">ALPHA</span>
+                  )}
+                </div>
+                <div class="card-content">
+                  <h3 class="card-title">{release.data.title}</h3>
+                  <p class="card-summary">{release.data.summary}</p>
+                </div>
+              </div>
+              <div class="card-arrow">→</div>
+            </a>
+          ))}
+        </div>
+        <div class="load-more-section" id="loadMoreSection">
+          <div class="load-more-info">
+            <span id="displayCount">{Math.min(INITIAL_DISPLAY_COUNT, sortedReleases.length)}</span> / <span id="totalCount">{sortedReleases.length}</span> 件表示中
+          </div>
+          <div class="load-more-buttons">
+            <button class="load-more-btn" id="loadMoreBtn">さらに読み込む</button>
+            <button class="load-all-btn" id="loadAllBtn">すべて表示</button>
+          </div>
+        </div>
+        <div class="no-results" id="noResults" style="display: none;">
+          <div class="empty-icon">◇</div>
+          <p class="empty-text">選択したフィルターに一致するリリースがありません</p>
+        </div>
+      </>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0 5rem;
+    position: relative;
+  }
+
+  .hero.hero-compact {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .hero-compact .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-compact .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-notice {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #fcd34d;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    padding: 0.875rem 1.25rem;
+    border-radius: 10px;
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: left;
+    animation: fadeIn 0.6s ease 0.3s both;
+  }
+
+  .notice-icon {
+    color: #f59e0b;
+    flex-shrink: 0;
+    font-size: 1rem;
+    margin-top: 0.1rem;
+  }
+
+  .notice-text {
+    flex: 1;
+  }
+
+  .notice-text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .notice-text a:hover {
+    color: var(--color-text);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.6s ease 0.1s both;
+  }
+
+  .hero-accent {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+    animation: fadeIn 0.6s ease 0.2s both;
+  }
+
+  .releases-section {
+    margin-top: 2rem;
+  }
+
+  .layout-controls {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.25rem;
+  }
+
+  .layout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text-subtle);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .layout-btn:hover {
+    color: var(--color-text-muted);
+    background: var(--color-bg-elevated);
+  }
+
+  .layout-btn.active {
+    color: var(--color-accent);
+    background: var(--color-bg-elevated);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .empty-icon {
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  .empty-text {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-subtext {
+    font-size: 0.9rem;
+    color: var(--color-text-subtle);
+  }
+
+  .releases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .releases-grid.layout-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .releases-grid.layout-list .release-card {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .releases-grid.layout-list .card-date {
+    position: static;
+    flex-shrink: 0;
+    min-width: 90px;
+    padding-top: 0.15rem;
+  }
+
+  .releases-grid.layout-list .card-main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .releases-grid.layout-list .card-header {
+    margin-bottom: 0;
+    width: auto;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+
+  .releases-grid.layout-list .repo-badge {
+    display: inline-block;
+  }
+
+  .releases-grid.layout-list .card-version {
+    font-size: 0.85rem;
+  }
+
+  .releases-grid.layout-list .card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .releases-grid.layout-list .card-title {
+    margin-bottom: 0.35rem;
+  }
+
+  .releases-grid.layout-list .card-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .releases-grid.layout-list .card-tags {
+    margin-top: 0;
+  }
+
+  .releases-grid.layout-list .card-arrow {
+    position: static;
+    opacity: 0;
+    transform: none;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .releases-grid.layout-list .release-card:hover .card-arrow {
+    opacity: 1;
+  }
+
+  .release-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease var(--delay) both;
+  }
+
+  .release-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-accent-glow) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .release-card:hover {
+    border-color: var(--color-accent-dim);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .release-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .card-version {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .card-version[data-repo="sdk-python"],
+  .card-version[data-repo="sdk-typescript"],
+  .card-version[data-repo="tools"] {
+    color: var(--color-python);
+  }
+
+  .card-version[data-repo="agentcore-python"],
+  .card-version[data-repo="agentcore-typescript"] {
+    color: var(--color-agentcore-python);
+  }
+
+  .card-version[data-repo="cdk"] {
+    color: var(--color-cdk);
+  }
+
+  .card-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .card-badge.prerelease {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--color-prerelease);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .card-content {
+    flex: 1;
+    position: relative;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .card-summary {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .card-main {
+    display: contents;
+  }
+
+  .card-date {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-subtle);
+    z-index: 1;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .release-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Inline Filters */
+  .inline-filters {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .filter-label {
+    font-size: 0.8rem;
+    color: var(--color-text-subtle);
+    white-space: nowrap;
+  }
+
+  .repo-tabs {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.25rem;
+  }
+
+  .repo-tab {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .repo-tab:hover {
+    color: var(--color-text);
+    background: var(--color-bg-card);
+  }
+
+  .repo-tab.active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .repo-tab[data-repo="sdk-python"].active,
+  .repo-tab[data-repo="sdk-typescript"].active,
+  .repo-tab[data-repo="tools"].active {
+    background: var(--color-python);
+  }
+
+  .repo-tab[data-repo="agentcore-python"].active,
+  .repo-tab[data-repo="agentcore-typescript"].active {
+    background: var(--color-agentcore-python);
+  }
+
+  .period-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .period-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .period-separator {
+    color: var(--color-text-subtle);
+    font-size: 0.85rem;
+  }
+
+  .period-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .period-btn:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  .period-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .period-dropdown {
+    position: relative;
+  }
+
+  .period-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .period-dropdown-btn:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  .period-dropdown-btn.active {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .period-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    min-width: 200px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: none;
+  }
+
+  .period-dropdown-menu.open {
+    display: block;
+  }
+
+  .period-year-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .period-year-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .period-year-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .period-months {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .period-month-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .period-month-btn:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  .period-month-btn.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .filter-actions {
+    margin-left: auto;
+  }
+
+  .active-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 6px;
+  }
+
+  .active-filter-text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .clear-filter-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-subtle);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .clear-filter-btn:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  .release-card.hidden {
+    display: none;
+  }
+
+  .release-card.pagination-hidden {
+    display: none;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--color-bg-card);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .load-more-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .load-more-section.hidden {
+    display: none;
+  }
+
+  .load-more-info {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .load-more-buttons {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .load-more-btn,
+  .load-all-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .load-more-btn {
+    background: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .load-more-btn:hover {
+    background: var(--color-accent-dim);
+    border-color: var(--color-accent-dim);
+  }
+
+  .load-all-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .load-all-btn:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .inline-filters {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .filter-group {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .repo-tabs {
+      flex-wrap: wrap;
+    }
+
+    .filter-actions {
+      margin-left: 0;
+      align-self: flex-end;
+    }
+
+    .period-dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 2rem 0 3rem;
+    }
+
+    .hero.hero-compact {
+      padding: 1.5rem 0 2rem;
+    }
+
+    .releases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .releases-grid.layout-list .release-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .releases-grid.layout-list .card-footer {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .releases-grid.layout-list .card-arrow {
+      display: none;
+    }
+
+    .load-more-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .load-more-btn,
+    .load-all-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Elements
+  const releaseCards = document.querySelectorAll('.release-card');
+  const noResults = document.getElementById('noResults');
+  const releasesGrid = document.getElementById('releasesGrid');
+  const activeFilterBar = document.getElementById('activeFilterBar');
+  const activeFilterText = document.getElementById('activeFilterText');
+  const clearFilterBtn = document.getElementById('clearFilterBtn');
+
+  // Layout controls
+  const layoutGridBtn = document.getElementById('layoutGrid');
+  const layoutListBtn = document.getElementById('layoutList');
+
+  // Pagination elements
+  const loadMoreSection = document.getElementById('loadMoreSection');
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const loadAllBtn = document.getElementById('loadAllBtn');
+  const displayCountEl = document.getElementById('displayCount');
+
+  // Period dropdown elements
+  const startMonthBtn = document.getElementById('startMonthBtn');
+  const startMonthMenu = document.getElementById('startMonthMenu');
+  const startMonthLabel = document.getElementById('startMonthLabel');
+  const endMonthBtn = document.getElementById('endMonthBtn');
+  const endMonthMenu = document.getElementById('endMonthMenu');
+  const endMonthLabel = document.getElementById('endMonthLabel');
+  const periodAllBtn = document.querySelector('.period-btn[data-period="all"]');
+
+  // Pagination state
+  const totalReleases = parseInt(releasesGrid?.getAttribute('data-total') || '0');
+  const initialCount = parseInt(releasesGrid?.getAttribute('data-initial') || '12');
+  const loadMoreCount = parseInt(releasesGrid?.getAttribute('data-loadmore') || '12');
+  let currentDisplayCount = Math.min(initialCount, totalReleases);
+
+  // Filter state
+  let selectedRepo: string | null = null;
+  let startMonth: string | null = null;
+  let endMonth: string | null = null;
+
+  // Format month for display
+  function formatMonth(ym: string): string {
+    const [year, month] = ym.split('-');
+    return `${year}年${parseInt(month)}月`;
+  }
+
+  // Check if a month is within range
+  function isMonthInRange(month: string, start: string | null, end: string | null): boolean {
+    if (!start && !end) return true;
+    if (start && !end) return month >= start;
+    if (!start && end) return month <= end;
+    // Both start and end are set - normalize the range
+    const rangeStart = start! <= end! ? start! : end!;
+    const rangeEnd = start! <= end! ? end! : start!;
+    return month >= rangeStart && month <= rangeEnd;
+  }
+
+  // Initialize pagination
+  function initPagination() {
+    updatePaginationVisibility();
+  }
+
+  function updatePaginationVisibility() {
+    releaseCards.forEach((card) => {
+      const cardIndex = parseInt(card.getAttribute('data-index') || '0');
+      if (cardIndex < currentDisplayCount) {
+        card.classList.remove('pagination-hidden');
+      } else {
+        card.classList.add('pagination-hidden');
+      }
+    });
+
+    if (displayCountEl) {
+      displayCountEl.textContent = String(Math.min(currentDisplayCount, totalReleases));
+    }
+
+    if (loadMoreSection) {
+      if (currentDisplayCount >= totalReleases) {
+        loadMoreSection.classList.add('hidden');
+      } else {
+        loadMoreSection.classList.remove('hidden');
+      }
+    }
+  }
+
+  loadMoreBtn?.addEventListener('click', () => {
+    currentDisplayCount = Math.min(currentDisplayCount + loadMoreCount, totalReleases);
+    updatePaginationVisibility();
+    updateFilter();
+  });
+
+  loadAllBtn?.addEventListener('click', () => {
+    currentDisplayCount = totalReleases;
+    updatePaginationVisibility();
+    updateFilter();
+  });
+
+  // Layout switching
+  function setLayout(layout: 'grid' | 'list') {
+    if (!releasesGrid) return;
+
+    if (layout === 'list') {
+      releasesGrid.classList.add('layout-list');
+      layoutListBtn?.classList.add('active');
+      layoutGridBtn?.classList.remove('active');
+    } else {
+      releasesGrid.classList.remove('layout-list');
+      layoutGridBtn?.classList.add('active');
+      layoutListBtn?.classList.remove('active');
+    }
+
+    localStorage.setItem('releaseLayout', layout);
+  }
+
+  layoutGridBtn?.addEventListener('click', () => setLayout('grid'));
+  layoutListBtn?.addEventListener('click', () => setLayout('list'));
+
+  const savedLayout = localStorage.getItem('releaseLayout') as 'grid' | 'list' | null;
+  if (savedLayout) {
+    setLayout(savedLayout);
+  }
+
+  initPagination();
+
+  // Update active filter bar display
+  function updateActiveFilterBar() {
+    if (!activeFilterBar || !activeFilterText) return;
+
+    const hasPeriodFilter = startMonth !== null || endMonth !== null;
+    const hasFilters = selectedRepo !== null || hasPeriodFilter;
+
+    if (hasFilters) {
+      const parts: string[] = [];
+      if (selectedRepo) {
+        const repoTab = document.querySelector(`.repo-tab[data-repo="${selectedRepo}"]`);
+        parts.push(repoTab?.textContent || selectedRepo);
+      }
+      if (hasPeriodFilter) {
+        if (startMonth && endMonth) {
+          if (startMonth === endMonth) {
+            parts.push(formatMonth(startMonth));
+          } else {
+            const rangeStart = startMonth <= endMonth ? startMonth : endMonth;
+            const rangeEnd = startMonth <= endMonth ? endMonth : startMonth;
+            parts.push(`${formatMonth(rangeStart)} 〜 ${formatMonth(rangeEnd)}`);
+          }
+        } else if (startMonth) {
+          parts.push(`${formatMonth(startMonth)} 〜`);
+        } else if (endMonth) {
+          parts.push(`〜 ${formatMonth(endMonth)}`);
+        }
+      }
+      activeFilterText.textContent = `フィルター: ${parts.join(' / ')}`;
+      activeFilterBar.style.display = 'flex';
+    } else {
+      activeFilterBar.style.display = 'none';
+    }
+  }
+
+  function updateFilter() {
+    let visibleCount = 0;
+    const hasPeriodFilter = startMonth !== null || endMonth !== null;
+    const hasFilters = selectedRepo !== null || hasPeriodFilter;
+
+    releaseCards.forEach((card) => {
+      const cardMonth = card.getAttribute('data-month') || '';
+      const cardRepo = card.getAttribute('data-repo') || '';
+      const cardIndex = parseInt(card.getAttribute('data-index') || '0');
+
+      const matchesMonth = isMonthInRange(cardMonth, startMonth, endMonth);
+      const matchesRepo = selectedRepo === null || selectedRepo === cardRepo;
+
+      const matchesFilter = matchesMonth && matchesRepo;
+      const withinPagination = hasFilters || cardIndex < currentDisplayCount;
+
+      if (matchesFilter && withinPagination) {
+        card.classList.remove('hidden');
+        card.classList.remove('pagination-hidden');
+        visibleCount++;
+      } else if (!matchesFilter) {
+        card.classList.add('hidden');
+      } else {
+        card.classList.add('pagination-hidden');
+      }
+    });
+
+    if (noResults && releasesGrid) {
+      if (visibleCount === 0 && hasFilters) {
+        noResults.style.display = 'block';
+        releasesGrid.style.display = 'none';
+      } else {
+        noResults.style.display = 'none';
+        releasesGrid.style.display = 'grid';
+      }
+    }
+
+    if (loadMoreSection) {
+      if (hasFilters || currentDisplayCount >= totalReleases) {
+        loadMoreSection.classList.add('hidden');
+      } else {
+        loadMoreSection.classList.remove('hidden');
+      }
+    }
+
+    updateActiveFilterBar();
+  }
+
+  // Repository tabs
+  document.querySelectorAll('.repo-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const repo = btn.getAttribute('data-repo');
+      if (!repo) return;
+
+      // Update active state
+      document.querySelectorAll('.repo-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update filter
+      selectedRepo = repo === 'all' ? null : repo;
+      updateFilter();
+    });
+  });
+
+  // Period "All" button
+  periodAllBtn?.addEventListener('click', () => {
+    startMonth = null;
+    endMonth = null;
+    periodAllBtn.classList.add('active');
+    startMonthBtn?.classList.remove('active');
+    endMonthBtn?.classList.remove('active');
+    if (startMonthLabel) startMonthLabel.textContent = '開始月';
+    if (endMonthLabel) endMonthLabel.textContent = '終了月';
+    document.querySelectorAll('.period-month-btn').forEach(b => b.classList.remove('active'));
+    updateFilter();
+  });
+
+  // Close all dropdowns
+  function closeAllDropdowns() {
+    startMonthMenu?.classList.remove('open');
+    endMonthMenu?.classList.remove('open');
+  }
+
+  // Start month dropdown toggle
+  startMonthBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    endMonthMenu?.classList.remove('open');
+    startMonthMenu?.classList.toggle('open');
+  });
+
+  // End month dropdown toggle
+  endMonthBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    startMonthMenu?.classList.remove('open');
+    endMonthMenu?.classList.toggle('open');
+  });
+
+  // Start month buttons
+  document.querySelectorAll('.start-month-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const month = btn.getAttribute('data-month');
+      if (!month) return;
+
+      // Update active state
+      document.querySelectorAll('.start-month-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      periodAllBtn?.classList.remove('active');
+      startMonthBtn?.classList.add('active');
+
+      // Update label
+      if (startMonthLabel) startMonthLabel.textContent = formatMonth(month);
+
+      // Close dropdown
+      closeAllDropdowns();
+
+      // Update filter
+      startMonth = month;
+      updateFilter();
+    });
+  });
+
+  // End month buttons
+  document.querySelectorAll('.end-month-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const month = btn.getAttribute('data-month');
+      if (!month) return;
+
+      // Update active state
+      document.querySelectorAll('.end-month-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      periodAllBtn?.classList.remove('active');
+      endMonthBtn?.classList.add('active');
+
+      // Update label
+      if (endMonthLabel) endMonthLabel.textContent = formatMonth(month);
+
+      // Close dropdown
+      closeAllDropdowns();
+
+      // Update filter
+      endMonth = month;
+      updateFilter();
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
+
+  // Clear filter button
+  clearFilterBtn?.addEventListener('click', () => {
+    selectedRepo = null;
+    startMonth = null;
+    endMonth = null;
+
+    // Reset repo tabs
+    document.querySelectorAll('.repo-tab').forEach(b => b.classList.remove('active'));
+    document.querySelector('.repo-tab[data-repo="all"]')?.classList.add('active');
+
+    // Reset period
+    periodAllBtn?.classList.add('active');
+    startMonthBtn?.classList.remove('active');
+    endMonthBtn?.classList.remove('active');
+    if (startMonthLabel) startMonthLabel.textContent = '開始月';
+    if (endMonthLabel) endMonthLabel.textContent = '終了月';
+    document.querySelectorAll('.period-month-btn').forEach(b => b.classList.remove('active'));
+
+    updateFilter();
+  });
+
+  // Close dropdown on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+    }
+  });
+</script>

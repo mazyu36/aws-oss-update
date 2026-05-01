@@ -1,0 +1,19 @@
+{
+  "github": {
+    "owner": "aws",
+    "repository": "bedrock-agentcore-sdk-python",
+    "displayName": "Python SDK",
+    "shortName": "agentcore-python",
+    "targetBranch": "main"
+  },
+  "processing": {
+    "maxRetries": 3,
+    "retryIntervalMs": 30000,
+    "includePrerelease": true
+  },
+  "site": {
+    "baseUrl": "",
+    "title": "Agent SDK Release Notes",
+    "description": "Strands Agents / Bedrock AgentCore SDK リリースの解説サイト"
+  }
+}
