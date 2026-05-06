@@ -9,7 +9,7 @@
   "processing": {
     "maxRetries": 3,
     "retryIntervalMs": 30000,
-    "includePrerelease": true
+    "includePrerelease": false
   },
   "site": {
     "baseUrl": "",

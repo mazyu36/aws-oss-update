@@ -104,6 +104,7 @@ export class ReleaseMonitor {
   /**
    * Get existing release files as a Set of versions
    * e.g., python-v1-21-0.md -> v1.21.0
+   * e.g., typescript-v1-0-0-rc-0.md -> v1.0.0-rc.0
    */
   getExistingReleaseFiles() {
     const versions = new Set();
@@ -118,10 +119,25 @@ export class ReleaseMonitor {
 
       for (const file of files) {
         if (file.endsWith('.md') && file.startsWith(prefix)) {
-          // Convert filename to version: python-v1-21-0.md -> v1.21.0
+          // Convert filename to version
+          // Handle prerelease versions: typescript-v1-0-0-rc-0.md -> v1.0.0-rc.0
+          // Handle stable versions: python-v1-21-0.md -> v1.21.0
           const versionPart = file.replace(prefix, '').replace('.md', '');
-          const version = versionPart.replace(/-/g, '.');
-          versions.add(version);
+
+          // Match prerelease pattern (e.g., v1-0-0-rc-0, v1-0-0-beta-1)
+          const prereleaseMatch = versionPart.match(/^(v\d+-\d+-\d+)-((?:rc|beta|alpha)-\d+.*)$/);
+
+          if (prereleaseMatch) {
+            // Prerelease: v1-0-0-rc-0 -> v1.0.0-rc.0
+            const versionNumbers = prereleaseMatch[1].replace(/-/g, '.');
+            const prereleaseTag = prereleaseMatch[2].replace(/-/g, '.');
+            const version = `${versionNumbers}-${prereleaseTag}`;
+            versions.add(version);
+          } else {
+            // Stable: v1-21-0 -> v1.21.0
+            const version = versionPart.replace(/-/g, '.');
+            versions.add(version);
+          }
         }
       }
     } catch (error) {
