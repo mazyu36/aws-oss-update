@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.16"
+title: "Strands Tools v0.2.16 リリース解説"
 version: "v0.2.16"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-11-18
 summary: "MongoDB Atlas Memory ツールの追加、Code Interpreter のセッション永続化、cron ツールのセキュリティ修正を含むアップデート。"

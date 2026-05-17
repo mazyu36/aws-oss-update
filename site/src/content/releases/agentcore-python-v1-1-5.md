@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.5"
+title: "AgentCore Python SDK v1.1.5 リリース解説"
 version: "v1.1.5"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-01-13
 summary: "Episodic Memory Strategy のサポート追加、Strands 統合での relevance_score フィルタリング修正、ページネーション動作の改善を含むリリースです。"

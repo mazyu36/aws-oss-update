@@ -2,8 +2,9 @@
   "github": {
     "owner": "aws",
     "repository": "bedrock-agentcore-sdk-python",
-    "displayName": "Python SDK",
+    "displayName": "AgentCore Python SDK",
     "shortName": "agentcore-python",
+    "siteId": "agentcore-python",
     "targetBranch": "main"
   },
   "processing": {

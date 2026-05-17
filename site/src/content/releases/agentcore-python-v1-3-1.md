@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.3.1"
+title: "AgentCore Python SDK v1.3.1 リリース解説"
 version: "v1.3.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-17
 summary: "評価クライアントで誤った boto3 サービス名が使用されていた問題を修正しました。"

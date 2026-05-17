@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.6"
+title: "AgentCore Python SDK v0.1.6 リリース解説"
 version: "v0.1.6"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-01
 summary: "Session Manager、Session、Actor の各構造による包括的なセッション管理システムの導入、boto3 クライアント設定のカスタマイズサポート、タイムスタンプ精度の向上、add_turns でのパラメータ順序のバグ修正が含まれます。"

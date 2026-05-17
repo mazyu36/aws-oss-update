@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v1.2.0"
+title: "Strands TypeScript SDK v1.2.0 リリース解説"
 version: "v1.2.0"
-repository: "typescript"
-repositoryDisplayName: "TypeScript SDK"
+repository: "sdk-typescript"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-05-14
 summary: "マルチエージェント Interrupt サポート、Agent の takeSnapshot/loadSnapshot 公開 API、MCP クライアントの URL/認証フィールドとツール変更通知対応など多数の新機能を追加。コンテキストオーバーフロー検出の改善、ネイティブトークンカウントのデフォルト無効化などのバグ修正も含まれます。"

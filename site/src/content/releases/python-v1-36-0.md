@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.36.0"
+title: "Strands Python SDK v1.36.0 リリース解説"
 version: "v1.36.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-04-17
 summary: "Agent のスナップショット機能、URL からのスキル読み込み、Agent コンストラクタでの callable フック対応など、多数の新機能とバグ修正が含まれます。"

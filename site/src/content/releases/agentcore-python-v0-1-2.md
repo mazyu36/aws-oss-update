@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.2"
+title: "AgentCore Python SDK v0.1.2 リリース解説"
 version: "v0.1.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-08-11
 summary: "このリリースでは、長時間実行されるエージェント呼び出しでの ping 失敗の問題が修正されました。並行性チェックとスレッドプールハンドリングの簡素化により、より安定したストリーミング処理が可能になります。"

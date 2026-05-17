@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.7.1"
+title: "Strands Python SDK v1.7.1 リリース解説"
 version: "v1.7.1"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-05
 summary: "非同期ジェネレータツールのサポートを追加し、Bedrock モデルプロバイダの互換性を向上させるバグ修正を含むリリース。ツールストリーミング機能により、ツールからリアルタイムでイベントを受け取ることが可能になりました。"

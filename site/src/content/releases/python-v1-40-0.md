@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.40.0"
+title: "Strands Python SDK v1.40.0 リリース解説"
 version: "v1.40.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-05-14
 summary: "プロアクティブなコンテキスト圧縮機能の追加、Bedrock の AccessDenied エラーキャッシュ、Swarm と OpenTelemetry 併用時の不具合修正など。"

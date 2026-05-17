@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.10"
+title: "Strands Tools v0.2.10 リリース解説"
 version: "v0.2.10"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-10-08
 summary: "Twelve Labs の AI モデルを使用した動画分析ツール（search_video と chat_video）を追加。バッチツールの出力形式を改善し、エージェントが個別のツール結果を表示できるように修正。"

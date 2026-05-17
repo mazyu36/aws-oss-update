@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.2.0"
+title: "AgentCore Python SDK v1.2.0 リリース解説"
 version: "v1.2.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-01-13
 summary: "エピソディックメモリ戦略のサポート追加、フレームワーク統合のためのテレメトリ機能強化、ページネーションと関連スコアフィルタリングのバグ修正"

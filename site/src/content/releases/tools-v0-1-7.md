@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.7"
+title: "Strands Tools v0.1.7 リリース解説"
 version: "v0.1.7"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-06-24
 summary: "Ubuntu Linux 環境でのタイムゾーンテストの修正と Windows 非対応ツールのドキュメント化を含むメンテナンスリリース。"

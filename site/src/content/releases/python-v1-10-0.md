@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.10.0"
+title: "Strands Python SDK v1.10.0 リリース解説"
 version: "v1.10.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-29
 summary: "Gemini モデルプロバイダーの追加、MCP ツール仕様への outputSchema サポート、PythonAgentTool のホットリロード対応、ModelCall と ToolCall イベントの安定版化、マルチエージェント用新しい HookEvent、および Gemini と MCP の重要なバグ修正。"

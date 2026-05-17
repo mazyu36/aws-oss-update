@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.2"
+title: "AgentCore Python SDK v1.0.2 リリース解説"
 version: "v1.0.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-16
 summary: "OAuth 2.0 3-legged 認証機能の追加とショートタームメモリへのメタデータサポートが含まれています。Identity サービスで 3LO コールバック URL を HTTP ヘッダー経由で設定できるようになり、メモリセッションでイベントにメタデータフィルターを適用できるようになりました。"

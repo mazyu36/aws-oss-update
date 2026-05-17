@@ -119,7 +119,7 @@ jobs:
         with:
           use_bedrock: "true"
           claude_args: |
-            --model us.anthropic.claude-opus-4-5-20251101-v1:0
+            --model us.anthropic.claude-opus-4-7
             --allowedTools "Bash(gh release:*),Bash(gh pr:*),Bash(gh pr merge:*),Bash(gh api:*),Bash(git:*),Read,Write,Edit"
           prompt: |
             ${{ steps.check.outputs.display_name }} ${{ steps.version.outputs.version }} のリリース解説記事を生成してください。
@@ -157,9 +157,9 @@ jobs:
             **メンテナンスリリース用フォーマット:**
             ```markdown
             ---
-            title: "${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }}"
+            title: "${{ steps.check.outputs.display_name }} ${{ steps.version.outputs.version }} リリース解説"
             version: "${{ steps.version.outputs.version }}"
-            repository: "${{ steps.check.outputs.short_name }}"
+            repository: "${{ steps.check.outputs.site_id }}"
             repositoryDisplayName: "${{ steps.check.outputs.display_name }}"
             releaseType: "${{ steps.check.outputs.release_type }}"
             date: YYYY-MM-DD
@@ -197,9 +197,9 @@ jobs:
 
             ```yaml
             ---
-            title: "${{ steps.check.outputs.repository }} ${{ steps.version.outputs.version }}"
+            title: "${{ steps.check.outputs.display_name }} ${{ steps.version.outputs.version }} リリース解説"
             version: "${{ steps.version.outputs.version }}"
-            repository: "${{ steps.check.outputs.short_name }}"
+            repository: "${{ steps.check.outputs.site_id }}"
             repositoryDisplayName: "${{ steps.check.outputs.display_name }}"
             releaseType: "${{ steps.check.outputs.release_type }}"
             date: YYYY-MM-DD  # ← publishedAt から抽出

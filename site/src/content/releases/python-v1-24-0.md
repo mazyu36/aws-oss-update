@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.24.0"
+title: "Strands Python SDK v1.24.0 リリース解説"
 version: "v1.24.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-01-29
 summary: "Bedrock での自動プロンプトキャッシング、ツール呼び出しのリトライ機構、ToolProvider の正式版化、フックイベントへの invocation_state 追加など、多数の新機能とバグ修正を追加。"

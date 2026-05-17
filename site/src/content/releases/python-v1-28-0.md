@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.28.0"
+title: "Strands Python SDK v1.28.0 リリース解説"
 version: "v1.28.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-02-25
 summary: "Plugin システムの導入により Agent の拡張性が大幅に向上。add_hook での union 型・リスト型サポート、PyAudio のオプション依存関係化も含まれます。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.4"
+title: "Strands Tools v0.1.4 リリース解説"
 version: "v0.1.4"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-05-26
 summary: "get_user_input() ユーティリティ関数に、KeyboardInterrupt と EOFError の伝播を制御できる新しいパラメータを追加しました。これにより、ユーザー入力処理時の割り込み動作をより細かく制御できるようになります。"

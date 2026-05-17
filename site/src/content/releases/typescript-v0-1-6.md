@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.6"
+title: "Strands TypeScript SDK v0.1.6 リリース解説"
 version: "v0.1.6"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-01-21
 summary: "MCP タスク拡張ツールのサポートと、Model クラスの値としてのエクスポート機能が追加されました。"

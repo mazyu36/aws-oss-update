@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.1"
+title: "Strands Tools v0.1.1 リリース解説"
 version: "v0.1.1"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-05-19
 summary: "Mem0 Memory ツールの追加により、エージェントがユーザーとの対話履歴を記憶し、パーソナライズされた体験を提供できるようになりました。また、PyPI リンクの修正が含まれています。"

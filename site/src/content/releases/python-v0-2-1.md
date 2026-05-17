@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.2.1"
+title: "Strands Python SDK v0.2.1 リリース解説"
 version: "v0.2.1"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-04
 summary: "v0.2.0 のホットフィックスリリース。並列ツール実行時のパフォーマンス問題を修正し、ツール実行時間を平均 30 秒から 5 秒に短縮しました。"

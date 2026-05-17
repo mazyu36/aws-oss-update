@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-typescript v0.2.0"
+title: "AgentCore TypeScript SDK v0.2.0 リリース解説"
 version: "v0.2.0"
 repository: "agentcore-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "AgentCore TypeScript SDK"
 releaseType: "stable"
 date: 2026-01-22
 summary: "Runtime SDK と Identity SDK が追加され、AgentCore Runtime 準拠のサーバー構築や OAuth2 M2M フローによる認証管理が可能になりました。また、Code Interpreter のバグ修正も含まれています。"

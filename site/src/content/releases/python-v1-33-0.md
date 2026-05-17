@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.33.0"
+title: "Strands Python SDK v1.33.0 リリース解説"
 version: "v1.33.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-03-24
 summary: "litellm のサプライチェーン攻撃への緊急対応と SummarizingConversationManager の空レスポンス問題の修正が含まれます。"

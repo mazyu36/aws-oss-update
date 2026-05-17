@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.2.1"
+title: "AgentCore Python SDK v1.2.1 リリース解説"
 version: "v1.2.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-03
 summary: "MemoryClient にイベントメタデータサポートを追加、namespace 文字列の末尾スラッシュ修正"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.4"
+title: "AgentCore Python SDK v0.1.4 リリース解説"
 version: "v0.1.4"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-09-17
 summary: "CodeInterpreter のカスタム認証情報管理サポート、AWS Lambda 互換 JSON ロギング実装、boto3 タイムスタンプ解像度問題の修正など、認証管理の柔軟性向上とロギングの改善が含まれるリリース。"

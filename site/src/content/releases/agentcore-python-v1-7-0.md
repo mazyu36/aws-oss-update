@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.7.0"
+title: "AgentCore Python SDK v1.7.0 リリース解説"
 version: "v1.7.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-28
 summary: "5 つの新しいプリミティブクライアント（Policy、Gateway、Evaluation、Runtime、Identity）にパススルー機能と *_and_wait ポーリングメソッドを追加。boto3 API を直接利用しながら snake_case サポートや便利なヘルパーメソッドが使えるようになりました。"

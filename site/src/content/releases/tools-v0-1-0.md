@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.0"
+title: "Strands Tools v0.1.0 リリース解説"
 version: "v0.1.0"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-05-16
 summary: "Strands Agents Tools の初回リリース。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.3.0"
+title: "Strands Tools v0.3.0 リリース解説"
 version: "v0.3.0"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-03-26
 summary: "http_request ツールのセキュリティ強化、Code Interpreter のセッションタイムアウト設定、X402 プロトコルサポートが追加されました。"

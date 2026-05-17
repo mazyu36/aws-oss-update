@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.7.0"
+title: "Strands TypeScript SDK v0.7.0 リリース解説"
 version: "v0.7.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-03-19
 summary: "A2A プロトコルサポート、Plugin システム、Bedrock プロンプトキャッシング、OpenTelemetry メトリクス、ConversationManager の型付け強化など、多数の新機能が追加されました。agentId から id へのリネームと HookProvider から Plugin への移行を含む破壊的変更があります。"

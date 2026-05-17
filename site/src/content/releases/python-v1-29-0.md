@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.29.0"
+title: "Strands Python SDK v1.29.0 リリース解説"
 version: "v1.29.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-03-04
 summary: "OpenAI Responses API モデルの追加、プラグイン開発を簡素化する @hook/@tool デコレータ、ツール結果の切り詰め戦略の改善などを含むリリースです。"

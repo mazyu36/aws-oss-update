@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.4"
+title: "AgentCore Python SDK v1.1.4 リリース解説"
 version: "v1.1.4"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-01-08
 summary: "メッセージにバイナリデータ（画像など）が含まれる場合に発生していた JSON シリアライゼーションエラーを修正しました。Tool の結果に画像が含まれる場合でも、正常にメッセージを処理できるようになります。"

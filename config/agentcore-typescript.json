@@ -2,8 +2,9 @@
   "github": {
     "owner": "aws",
     "repository": "bedrock-agentcore-sdk-typescript",
-    "displayName": "TypeScript SDK",
+    "displayName": "AgentCore TypeScript SDK",
     "shortName": "agentcore-typescript",
+    "siteId": "agentcore-typescript",
     "targetBranch": "main"
   },
   "processing": {

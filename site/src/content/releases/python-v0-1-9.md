@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.9"
+title: "Strands Python SDK v0.1.9 リリース解説"
 version: "v0.1.9"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-06-24
 summary: "Pydantic モデルを使用した構造化出力のサポート、OpenTelemetry メトリクスの追加、Google A2A プロトコルの統合、ストリーミング機能の改善などを含む大型アップデートです。"

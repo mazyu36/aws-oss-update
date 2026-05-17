@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.9"
+title: "Strands Tools v0.1.9 リリース解説"
 version: "v0.1.9"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-11
 summary: "Stability AI による画像生成ツールと A2A クライアントツールを追加。UI レンダリングとブラウザツールの依存関係を修正。"

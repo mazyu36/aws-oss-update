@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.22.0"
+title: "Strands Python SDK v1.22.0 リリース解説"
 version: "v1.22.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-01-13
 summary: "MCP リソース操作のサポート、Bedrock Guardrails の最新メッセージ評価オプション、LiteLLM の非ストリーミング対応、AgentBase Protocol の導入、並行実行時の状態破損防止などの新機能とバグ修正を追加。"

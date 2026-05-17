@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.16.0"
+title: "Strands Python SDK v1.16.0 リリース解説"
 version: "v1.16.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-11-12
 summary: "非同期フック対応、スレッドコンテキスト共有、OpenTelemetry による強化されたテレメトリ機能、そしてツールパラメータのシンプルな記述方法が追加されました。また、Anthropic のコンテキストオーバーフローエラー処理、MCP サーバーの 5xx エラー時のハング問題、Gemini の非 JSON エラーレスポンス処理などの重要なバグ修正が含まれます。"

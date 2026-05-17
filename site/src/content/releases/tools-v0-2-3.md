@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.3"
+title: "Strands Tools v0.2.3 リリース解説"
 version: "v0.2.3"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-30
 summary: "このリリースでは、コンピュータ操作の自動化を可能にする use_computer ツール、検索フィルタリング機能の強化、そして Model Context Protocol (MCP) サーバーとの統合を実現する MCP クライアントツールが追加されました。"

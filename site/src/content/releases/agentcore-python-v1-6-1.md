@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.6.1"
+title: "AgentCore Python SDK v1.6.1 リリース解説"
 version: "v1.6.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-10
 summary: "AgentCoreMemorySessionManager に read_only フラグを追加し、メモリへの書き込みを無効化できるようになりました。また、install_packages() のパッケージ検証がアローリスト方式に変更されセキュリティが強化されました。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.3"
+title: "AgentCore Python SDK v1.1.3 リリース解説"
 version: "v1.1.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-01-07
 summary: "CodeInterpreter クラスに新しい便利メソッドを追加し、ファイル操作とパッケージ管理が簡単になりました。既存のコードとの互換性を保ちながら、より直感的な API を提供します。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.6"
+title: "AgentCore Python SDK v1.0.6 リリース解説"
 version: "v1.0.6"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-11-10
 summary: "メモリ管理の名前空間一括削除機能の追加、Browser と Code Interpreter のコントロールプレーン CRUD 操作の追加、および list_events のフィルタリングバグ修正を含むリリースです。"

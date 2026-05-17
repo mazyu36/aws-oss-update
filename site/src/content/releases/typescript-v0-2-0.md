@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.2.0"
+title: "Strands TypeScript SDK v0.2.0 リリース解説"
 version: "v0.2.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-01-29
 summary: "モデル関連エラーの共通基底クラス ModelError が追加され、エラーハンドリングが統一化されました。"

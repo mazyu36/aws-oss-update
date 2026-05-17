@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.1.0"
+title: "Strands Python SDK v1.1.0 リリース解説"
 version: "v1.1.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-24
 summary: "コンテナ化されたデプロイメント向けの A2A Server マウント機能、ネストされたツールコレクションの自動フラット化、Agent as Tool のトレース改善が追加されました。"

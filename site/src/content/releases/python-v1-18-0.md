@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.18.0"
+title: "Strands Python SDK v1.18.0 リリース解説"
 version: "v1.18.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-11-21
 summary: "マルチエージェントの割り込み対応強化、MCP クライアントのタイムアウトエラーに対する接続保護、ツールローダーのセキュリティ強化、LiteLLM のキャッシュトークンメトリクス修正などの改善を含むリリース。"

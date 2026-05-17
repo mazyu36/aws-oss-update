@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.32.0"
+title: "Strands Python SDK v1.32.0 リリース解説"
 version: "v1.32.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-03-20
 summary: "イベントループのサイクルメトリクス修正、Mistral 依存関係の互換性修正、ストリーミング時の toolUse ブロック処理修正など、3 つの重要なバグ修正が含まれます。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.9"
+title: "Strands Tools v0.2.9 リリース解説"
 version: "v0.2.9"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-09-29
 summary: "Mem0 グラフデータ表示の修正、readabilipy 依存関係の削除、A2A クライアントツールの説明改善による LLM の URL ハルシネーション防止など、3 つのバグ修正を含むリリースです。"

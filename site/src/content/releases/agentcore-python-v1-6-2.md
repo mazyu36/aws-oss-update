@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.6.2"
+title: "AgentCore Python SDK v1.6.2 リリース解説"
 version: "v1.6.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-13
 summary: "OpenTelemetry の threading instrumentation との互換性問題を修正しました。opentelemetry-instrument を使用した async ハンドラーでのランタイムクラッシュが解消されました。"

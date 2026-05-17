@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.5.1"
+title: "AgentCore Python SDK v1.5.1 リリース解説"
 version: "v1.5.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-31
 summary: "プライバシー保護のため、OTEL span 属性へのユーザープロンプト・エージェント応答の自動出力を削除しました。"

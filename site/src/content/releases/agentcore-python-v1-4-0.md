@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.0"
+title: "AgentCore Python SDK v1.4.0 リリース解説"
 version: "v1.4.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-24
 summary: "SessionConfiguration による統合セッション設定機能を追加。プロキシ、ブラウザ拡張機能、プロファイルの永続化をシンプルな API で設定可能になりました。"

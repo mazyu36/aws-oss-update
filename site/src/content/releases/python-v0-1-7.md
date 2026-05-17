@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.7"
+title: "Strands Python SDK v0.1.7 リリース解説"
 version: "v0.1.7"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-06-09
 summary: "モデルプロバイダーのコンテンツタイプサポート改善、OpenAI ストリーミングのエラーハンドリング強化、ネストされたスキーマの保持、エージェントコールバックハンドラーの修正、プロンプトキャッシング対応を含むバグ修正リリース。"

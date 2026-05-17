@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.21.0"
+title: "Strands Python SDK v1.21.0 リリース解説"
 version: "v1.21.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-01-02
 summary: "FastAPI/Starlette カスタマイズサポート、ツールレジストリの動的置き換え機能、MCP メタデータサポート、Web/検索結果の引用サポート、Gemini ビルトインツール、カスタム HTTP クライアント対応、会話マネージャーの per_turn パラメータ、フックによるモデル呼び出しリトライ機能など、多数の新機能を追加。"

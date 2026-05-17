@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.3.0"
+title: "Strands Python SDK v1.3.0 リリース解説"
 version: "v1.3.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-08-04
 summary: "a2a-sdk の依存関係の修正、セッションコードフェンスとテストの改善、max_tokens 到達時の専用例外の追加。"

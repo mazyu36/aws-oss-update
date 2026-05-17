@@ -1,8 +1,8 @@
 ---
-title: "tools v0.5.2"
+title: "Strands Tools v0.5.2 リリース解説"
 version: "v0.5.2"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-04-30
 summary: "shell ツールにおける PTY ファイルディスクリプタのリソースリーク問題を修正しました。"

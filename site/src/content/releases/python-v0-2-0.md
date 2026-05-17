@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.2.0"
+title: "Strands Python SDK v0.2.0 リリース解説"
 version: "v0.2.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-02
 summary: "Agent State によるステートフル情報管理、Mistral モデルサポート、OpenAI 推論コンテンツ対応、A2A ツールのスキル変換機能、ネイティブ非同期イテレータサポート、Bedrock エラー情報の改善など、多数の新機能と破壊的変更を含むマイナーバージョンアップデート。"

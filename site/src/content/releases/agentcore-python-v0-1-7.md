@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.7"
+title: "AgentCore Python SDK v0.1.7 リリース解説"
 version: "v0.1.7"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-01
 summary: "AWS リージョンのバリデーションロジックを改善し、デフォルトリージョンとユーザー指定リージョンの不一致による ValidationException を修正。セッション作成前にリージョンを検証することで、より堅牢なエラーハンドリングを実現。"

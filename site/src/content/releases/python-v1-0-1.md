@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.0.1"
+title: "Strands Python SDK v1.0.1 リリース解説"
 version: "v1.0.1"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-18
 summary: "グラフワークフローの並列実行サポート、非シリアライズ可能なツールパラメータのエラー修正、Agent をツールとして使用する際のトレースグループ化の改善を含む、安定性とパフォーマンスを向上させるバグ修正リリース。"

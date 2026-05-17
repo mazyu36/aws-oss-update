@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.19"
+title: "Strands Tools v0.2.19 リリース解説"
 version: "v0.2.19"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-01-02
 summary: "http_request ツールにプロキシサポートを追加。Calculator の精度パラメータが数値評価に影響を与えていた問題を修正。"

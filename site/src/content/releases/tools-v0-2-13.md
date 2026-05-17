@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.13"
+title: "Strands Tools v0.2.13 リリース解説"
 version: "v0.2.13"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-10-29
 summary: "Code Interpreter tool に自動セッション管理機能が追加され、手動でのセッション初期化が不要になりました。これにより、シンプルなコード実行タスクでの開発者体験が大幅に向上し、レイテンシとエラーの可能性が削減されます。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.7.0"
+title: "Strands Python SDK v1.7.0 リリース解説"
 version: "v1.7.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-02
 summary: "Claude Citation サポート、MultiAgent でのフック有効化、ToolContext への invocation_state 追加、BedrockModel での VPC エンドポイントサポートなど、機能追加とバグ修正を含むリリースです。"

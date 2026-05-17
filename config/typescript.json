@@ -2,8 +2,9 @@
   "github": {
     "owner": "strands-agents",
     "repository": "sdk-typescript",
-    "displayName": "TypeScript SDK",
+    "displayName": "Strands TypeScript SDK",
     "shortName": "typescript",
+    "siteId": "sdk-typescript",
     "targetBranch": "main"
   },
   "processing": {

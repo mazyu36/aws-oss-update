@@ -1,8 +1,8 @@
 ---
-title: "tools v0.5.3"
+title: "Strands Tools v0.5.3 リリース解説"
 version: "v0.5.3"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-05-14
 summary: "use_aws ツールの parameters オプション化、batch ツールのサブツール実行バグ修正、ブラウザツールの context_options サポート修正を含むリリースです。"

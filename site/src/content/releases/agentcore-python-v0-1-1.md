@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.1"
+title: "AgentCore Python SDK v0.1.1 リリース解説"
 version: "v0.1.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-07-23
 summary: "OAuth2 パラメータ名の修正、MemoryClient のリージョン検出改善、JSON シリアライゼーションの一貫性向上など、重要なバグ修正を含むリリース。"

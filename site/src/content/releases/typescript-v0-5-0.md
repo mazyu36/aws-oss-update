@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.5.0"
+title: "Strands TypeScript SDK v0.5.0 リリース解説"
 version: "v0.5.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-03-04
 summary: "マルチエージェントオーケストレーションの基盤コンポーネント、OpenTelemetry ベースのテレメトリ機能、構造化出力のインボケーションごとのオーバーライドが追加されました。AgentState から AppState への破壊的変更を含みます。"

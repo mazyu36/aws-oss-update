@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.0"
+title: "Strands Python SDK v0.1.0 リリース解説"
 version: "v0.1.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-16
 summary: "Strands Agents Python SDK の初回リリース。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.9.0"
+title: "AgentCore Python SDK v1.9.0 リリース解説"
 version: "v1.9.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-05-07
 summary: "AgentCore Payments モジュールの追加による AI エージェントの決済機能サポート、および Strands ConversationTurn のマルチターン履歴保持に関するバグ修正を含むリリースです。"

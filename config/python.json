@@ -2,8 +2,9 @@
   "github": {
     "owner": "strands-agents",
     "repository": "sdk-python",
-    "displayName": "Python SDK",
+    "displayName": "Strands Python SDK",
     "shortName": "python",
+    "siteId": "sdk-python",
     "targetBranch": "main"
   },
   "processing": {

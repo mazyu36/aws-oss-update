@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.2.1"
+title: "Strands TypeScript SDK v0.2.1 リリース解説"
 version: "v0.2.1"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-02-05
 summary: "Google Gemini モデルプロバイダーが追加され、AfterToolCallEvent にリトライ機能が追加されました。また、AfterModelCallEvent.retryModelCall が retry に名称変更される破壊的変更が含まれています。"

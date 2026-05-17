@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.14"
+title: "Strands Tools v0.2.14 リリース解説"
 version: "v0.2.14"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-11-04
 summary: "Browser Tool のインポートエラー修正と、A2A Client Tool に認証機能が追加されました。httpx パラメータを渡すことで JWT トークンを使った認証が可能になります。"

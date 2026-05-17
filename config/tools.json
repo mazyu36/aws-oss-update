@@ -2,8 +2,9 @@
   "github": {
     "owner": "strands-agents",
     "repository": "tools",
-    "displayName": "Tools",
+    "displayName": "Strands Tools",
     "shortName": "tools",
+    "siteId": "tools",
     "targetBranch": "main"
   },
   "processing": {

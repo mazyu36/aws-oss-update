@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.1"
+title: "AgentCore Python SDK v1.1.1 リリース解説"
 version: "v1.1.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-12-03
 summary: "Strands Evals フレームワークとの統合機能と、AWS STS JWT トークンによる新しい認証フローを追加。エージェントの評価テストと IAM ベースの外部 API 認証がよりシンプルになりました。"

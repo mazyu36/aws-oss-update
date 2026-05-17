@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.12"
+title: "Strands Tools v0.2.12 リリース解説"
 version: "v0.2.12"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-10-17
 summary: "retrieve ツールのメタデータ出力サポート、Mem0 に Neptune Analytics と Neptune DB のバックエンド対応、AgentCore ブラウザの永続コンテキスト使用によるブラウザ拡張機能の修正を追加。"

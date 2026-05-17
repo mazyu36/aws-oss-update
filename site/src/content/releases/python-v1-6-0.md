@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.6.0"
+title: "Strands Python SDK v1.6.0 リリース解説"
 version: "v1.6.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-08-26
 summary: "A2A FileParts/DataParts サポート、MultiAgentBase の同期呼び出し対応、ツール実行の並列/順次制御、Agent 呼び出しの柔軟性向上など、多数の新機能を追加。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.2"
+title: "AgentCore Python SDK v1.1.2 リリース解説"
 version: "v1.1.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-12-26
 summary: "WebSocket 接続に session_id サポートが追加され、Converse API の互換性問題と依存関係の問題が修正されました。"

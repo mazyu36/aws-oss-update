@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.25.0"
+title: "Strands Python SDK v1.25.0 リリース解説"
 version: "v1.25.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-02-05
 summary: "A2AAgent クラスの追加、S3 ロケーションサポート、マルチエージェントノードの割り込みサポートなど、多数の新機能とバグ修正が含まれています。"

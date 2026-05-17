@@ -1,8 +1,8 @@
 ---
-title: "tools v0.5.0"
+title: "Strands Tools v0.5.0 リリース解説"
 version: "v0.5.0"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-04-17
 summary: "RSS ツールのパストラバーサル脆弱性（CWE-22）を修正するセキュリティリリース。feed_id パラメータの検証が追加され、意図しないファイルアクセスを防止します。"

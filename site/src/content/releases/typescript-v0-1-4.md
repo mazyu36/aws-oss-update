@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.4"
+title: "Strands TypeScript SDK v0.1.4 リリース解説"
 version: "v0.1.4"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-01-02
 summary: "このリリースでは、ReasoningBlock の状態管理に関する重要なバグ修正が含まれています。accumulatedReasoning の状態リセット処理により、thinking mode 使用時のデータ破損を防ぎます。"

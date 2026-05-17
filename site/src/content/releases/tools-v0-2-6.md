@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.6"
+title: "Strands Tools v0.2.6 リリース解説"
 version: "v0.2.6"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-09-02
 summary: "Exa 検索インテグレーションの追加により、Web 検索とコンテンツ取得が可能に。エディターツールでの空文字列による削除機能をサポート。"

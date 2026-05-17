@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.4"
+title: "Strands Tools v0.2.4 リリース解説"
 version: "v0.2.4"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-08-19
 summary: "Tavily 検索ツールの追加、A2A プッシュ通知サポート、Python REPL の環境変数対応など、複数の新機能とバグ修正を含むリリース。"

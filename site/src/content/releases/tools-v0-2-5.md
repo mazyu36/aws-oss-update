@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.5"
+title: "Strands Tools v0.2.5 リリース解説"
 version: "v0.2.5"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-08-26
 summary: "mem0_memory ツールに設定可能な LLM 設定を追加、AgentCoreBrowser の初期化バグを修正、handoff_to_user のユーザープロンプト改善を実施。"

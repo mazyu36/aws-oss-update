@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.1"
+title: "Strands TypeScript SDK v0.1.1 リリース解説"
 version: "v0.1.1"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2025-12-03
 summary: "MCP のセキュリティ脆弱性修正と README のサンプルコード改善を含むメンテナンスリリース。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.21"
+title: "Strands Tools v0.2.21 リリース解説"
 version: "v0.2.21"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-02-19
 summary: "Pillow 12.x をサポートし、CVE-2026-25990 に対応するセキュリティ修正。"

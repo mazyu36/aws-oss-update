@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.7"
+title: "Strands Tools v0.2.7 リリース解説"
 version: "v0.2.7"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-09-10
 summary: "カスタム Code Interpreter 識別子のサポート、Bright Data による Web スクレイピングツールの追加、Browser ツールの persistent_context バグ修正、mem0_memory ツールへの Neptune Analytics グラフバックエンドのサポートを含むリリース"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.2"
+title: "Strands Tools v0.2.2 リリース解説"
 version: "v0.2.2"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-24
 summary: "diagram ツールと rss ツールの新規追加、shell ツールの @tool デコレーターへの移行、および複数の重要なバグ修正を含むリリース。swarm、think、memory、python_repl、file_read、file_write ツールの信頼性が向上しました。"

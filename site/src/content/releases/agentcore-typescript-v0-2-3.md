@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-typescript v0.2.3"
+title: "AgentCore TypeScript SDK v0.2.3 リリース解説"
 version: "v0.2.3"
 repository: "agentcore-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "AgentCore TypeScript SDK"
 releaseType: "stable"
 date: 2026-04-30
 summary: "BrowserLiveView の複数インスタンスサポート、on-behalf-of トークン交換機能の追加、SSE ストリーミングレスポンスとヘルスチェックのバグ修正が含まれます。"

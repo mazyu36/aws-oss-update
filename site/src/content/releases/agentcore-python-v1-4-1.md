@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.1"
+title: "AgentCore Python SDK v1.4.1 リリース解説"
 version: "v1.4.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-27
 summary: "メンテナンスリリース: バージョン管理の更新が含まれます。"

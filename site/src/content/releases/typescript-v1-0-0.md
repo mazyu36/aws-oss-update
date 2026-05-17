@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v1.0.0"
+title: "Strands TypeScript SDK v1.0.0 リリース解説"
 version: "v1.0.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-04-30
 summary: "正式版 v1.0.0 リリース。並列ツール実行がデフォルトに、OpenAI Responses API サポート、MCP マルチモーダル対応、ネイティブトークンカウント、invocationState による呼び出し状態管理など、多数の新機能が追加されました。"

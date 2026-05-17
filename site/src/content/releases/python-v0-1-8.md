@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.8"
+title: "Strands Python SDK v0.1.8 リリース解説"
 version: "v0.1.8"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-06-18
 summary: "AI による会話要約機能、ツール名の柔軟な呼び出し、エクスポネンシャルバックオフの修正を含む重要なアップデート。会話履歴を効率的に管理する SummarizingConversationManager が追加され、長時間実行エージェントのコンテキスト管理が改善されました。"

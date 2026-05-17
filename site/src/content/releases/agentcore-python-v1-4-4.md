@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.4"
+title: "AgentCore Python SDK v1.4.4 リリース解説"
 version: "v1.4.4"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-10
 summary: "EvaluationClient によるオンデマンドセッション評価機能、Memory SDK への Kinesis ストリーミング配信サポート、カスタムメッセージコンバーターの注入機能など、複数の新機能とバグ修正が含まれます。"

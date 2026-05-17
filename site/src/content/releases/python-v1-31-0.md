@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.31.0"
+title: "Strands Python SDK v1.31.0 リリース解説"
 version: "v1.31.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-03-19
 summary: "A2A リクエストコンテキストへのアクセス、OpenAI 2.x サポートなど新機能を追加。S3SessionManager のキー問題、Graph のエッジ評価、OpenAI ツールメッセージ形式など複数のバグ修正も含まれます。"
