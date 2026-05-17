@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v1.1.0"
+title: "Strands TypeScript SDK v1.1.0 リリース解説"
 version: "v1.1.0"
-repository: "typescript"
-repositoryDisplayName: "TypeScript SDK"
+repository: "sdk-typescript"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-05-08
 summary: "Human-in-the-Loop ワークフロー用の interrupt システム、モデル呼び出しの自動リトライ機能、プロアクティブなコンテキスト圧縮、結果オフロードプラグインなど、多数の新機能とバグ修正が含まれます。"

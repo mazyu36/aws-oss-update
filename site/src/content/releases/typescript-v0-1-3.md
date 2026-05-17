@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.3"
+title: "Strands TypeScript SDK v0.1.3 リリース解説"
 version: "v0.1.3"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2025-12-15
 summary: "OpenAI モデルでの動的 API キー読み込み機能を追加し、bash vended tools のエクスポート問題を修正しました。"

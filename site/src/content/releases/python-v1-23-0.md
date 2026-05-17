@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.23.0"
+title: "Strands Python SDK v1.23.0 リリース解説"
 version: "v1.23.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-01-21
 summary: "Graph での割り込みサポート、モデル呼び出しのリトライ戦略設定、AfterModelCallEvent でのステアリング機能、Nova Sonic 2 対応、BeforeInvocationEvent へのメッセージ公開など、多数の新機能とバグ修正を追加。"

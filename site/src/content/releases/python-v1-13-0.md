@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.13.0"
+title: "Strands Python SDK v1.13.0 リリース解説"
 version: "v1.13.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-10-17
 summary: "Agent API の invocation_state パラメータ追加、テレメトリの改善（timeToFirstByteMs メトリクス追加）、ツール呼び出し前の割り込み機能、デコレートされたツールでの割り込みサポート、Python 3.10 での例外ノート対応など、重要な新機能とバグ修正を提供。"

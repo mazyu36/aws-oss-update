@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.22"
+title: "Strands Tools v0.2.22 リリース解説"
 version: "v0.2.22"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-03-04
 summary: "hatch 仮想環境の互換性修正と、環境ツールのセキュリティ強化が含まれます。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.8"
+title: "AgentCore Python SDK v1.4.8 リリース解説"
 version: "v1.4.8"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-26
 summary: "AgentCore Evaluation サポートのための OTEL 属性出力機能が追加されました。また、画像のみのメッセージ処理時のクラッシュや、strands-agents-evals 未インストール時の ImportError に関するバグ修正が含まれています。"

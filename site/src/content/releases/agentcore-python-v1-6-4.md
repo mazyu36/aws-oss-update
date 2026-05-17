@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.6.4"
+title: "AgentCore Python SDK v1.6.4 リリース解説"
 version: "v1.6.4"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-23
 summary: "Guardrail のリダクションサポート、extended thinking の変換修正、関連性スコアフィルタリングの修正、プリミティブクライアント向けユーティリティメソッドの追加が含まれます。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.1"
+title: "Strands Tools v0.2.1 リリース解説"
 version: "v0.2.1"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-16
 summary: "Amazon Bedrock AgentCore との統合を大幅に強化。永続的メモリ管理、安全なコード実行環境、ブラウザ自動化機能を追加し、エージェントの能力が飛躍的に向上しました。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.9.1"
+title: "Strands Python SDK v1.9.1 リリース解説"
 version: "v1.9.1"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-19
 summary: "AWS Bedrock の ContentBlock 処理の改善、structured_output のコールバックハンドラー修正、MCP インストルメンテーションの冪等性修正、Model インターフェースの tool_choice パラメータ修正など、重要なバグ修正を含むリリース。"

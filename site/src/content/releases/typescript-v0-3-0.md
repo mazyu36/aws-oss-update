@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.3.0"
+title: "Strands TypeScript SDK v0.3.0 リリース解説"
 version: "v0.3.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-02-19
 summary: "Gemini モデルにおけるツールコール（関数呼び出し）のフルサポートが追加されました。"

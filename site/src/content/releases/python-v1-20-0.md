@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.20.0"
+title: "Strands Python SDK v1.20.0 リリース解説"
 version: "v1.20.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-12-15
 summary: "Swarm における Human-in-the-Loop パターンを可能にする Interrupt 機能、フック内での AgentResult アクセス、Structured Output の表示修正、Tool Spec の JSON Schema 対応改善、MCP Client のリソースリーク修正を含むリリースです。"

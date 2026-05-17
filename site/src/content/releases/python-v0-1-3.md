@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.3"
+title: "Strands Python SDK v0.1.3 リリース解説"
 version: "v0.1.3"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-21
 summary: "Direct tool call の参照形式が修正され、agent.tool.tool_name 形式での呼び出しが正しく反映されるようになりました。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.5"
+title: "Strands TypeScript SDK v0.1.5 リリース解説"
 version: "v0.1.5"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-01-13
 summary: "メンテナンスリリース: 依存関係の更新、CI/CD の改善などが含まれます。"

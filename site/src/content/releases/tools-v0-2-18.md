@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.18"
+title: "Strands Tools v0.2.18 リリース解説"
 version: "v0.2.18"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-12-15
 summary: "retrieve ツールの inputSchema に欠落していた retrieveFilter パラメータを追加。エージェントが Knowledge Base のフィルタリング機能を発見して使用できるようになりました。"

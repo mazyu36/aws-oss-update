@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.3.0"
+title: "AgentCore Python SDK v1.3.0 リリース解説"
 version: "v1.3.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-11
 summary: "メモリ機能の大幅な改善（イベントメタデータによる状態識別、メッセージバッチ処理、冗長な同期の排除）、バイナリコンテンツのダウンロードエラー修正、Identity エンドポイントの修正、非推奨メソッドの削除が含まれています。"

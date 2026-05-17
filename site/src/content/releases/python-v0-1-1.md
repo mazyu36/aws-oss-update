@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.1"
+title: "Strands Python SDK v0.1.1 リリース解説"
 version: "v0.1.1"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-17
 summary: "Bedrock API 呼び出しに user-agent を設定し、CloudTrail ログでの追跡を可能にする改善を含むバグ修正リリース。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.12.0"
+title: "Strands Python SDK v1.12.0 リリース解説"
 version: "v1.12.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-10-10
 summary: "モジュールベースのツールローディング機能、LiteLLM の構造化出力フォールバック、MCP の EmbeddedResource サポート、SageMaker の additional_args 修正など、ツールとモデルの機能強化とバグ修正を実施。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.11.0"
+title: "Strands Python SDK v1.11.0 リリース解説"
 version: "v1.11.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-10-08
 summary: "OTEL v1.37 セマンティック規約への対応、セッションマネージャーのパフォーマンス向上、フック機能によるツール呼び出しのキャンセル機能を追加"

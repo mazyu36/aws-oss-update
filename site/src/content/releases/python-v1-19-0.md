@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.19.0"
+title: "Strands Python SDK v1.19.0 リリース解説"
 version: "v1.19.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-12-03
 summary: "双方向音声会話を実現する BidiAgent（実験的機能）、モジュラープロンプティングのための Steering システム（実験的機能）、ノードキャンセル機能、falsey 値対応の interrupt、およびツール実行とトレーシングの重要なバグ修正を追加。"

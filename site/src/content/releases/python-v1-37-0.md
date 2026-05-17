@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.37.0"
+title: "Strands Python SDK v1.37.0 リリース解説"
 version: "v1.37.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-04-22
 summary: "experimental モジュールに Checkpoint 機能が追加され、モデル設定に context_window_limit が追加されました。また、ツール多用時の会話トリミングと MCP クライアントのクリーンアップに関するバグが修正されています。"

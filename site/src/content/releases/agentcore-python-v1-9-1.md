@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.9.1"
+title: "AgentCore Python SDK v1.9.1 リリース解説"
 version: "v1.9.1"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-05-12
 summary: "ファイルアップロード・ダウンロード時の二重 base64 エンコーディング問題の修正、ランタイムエラーハンドリングの改善、バウンドメソッドの entrypoint 登録サポートなど、複数のバグ修正が含まれています。"

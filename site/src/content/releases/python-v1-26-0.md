@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.26.0"
+title: "Strands Python SDK v1.26.0 リリース解説"
 version: "v1.26.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-02-11
 summary: "MCP Tasks のサポートが追加され、SummarizingConversationManager の再入ロック問題や Bedrock のコンテキストウィンドウオーバーフロー検出の問題が修正されました。"

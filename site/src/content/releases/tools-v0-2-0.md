@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.0"
+title: "Strands Tools v0.2.0 リリース解説"
 version: "v0.2.0"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-15
 summary: "マルチエージェントツールの SDK ネイティブパターンへの移行と複数モデルプロバイダーサポート、HTTP リクエストツールの HTML-to-Markdown 変換機能、ユーザーハンドオフツールの追加。破壊的変更を含む大規模なアーキテクチャ刷新。"

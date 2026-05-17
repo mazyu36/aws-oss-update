@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.5"
+title: "Strands Python SDK v0.1.5 リリース解説"
 version: "v0.1.5"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-26
 summary: "コールバックハンドラーへの推論テキスト対応、システムプロンプトの動的オーバーライド機能、イベントループのモジュール化リファクタリング、Bedrock 検証ルール緩和に対応した SlidingWindowConversationManager の更新、テレメトリのスパン修正が含まれます。"

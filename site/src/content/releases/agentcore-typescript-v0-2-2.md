@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-typescript v0.2.2"
+title: "AgentCore TypeScript SDK v0.2.2 リリース解説"
 version: "v0.2.2"
 repository: "agentcore-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "AgentCore TypeScript SDK"
 releaseType: "stable"
 date: 2026-03-12
 summary: "ブラウザセッションにプロキシ、拡張機能、プロファイルのサポートが追加され、新しい BrowserLiveView コンポーネントでリモートブラウザセッションのリアルタイム表示が可能になりました。"

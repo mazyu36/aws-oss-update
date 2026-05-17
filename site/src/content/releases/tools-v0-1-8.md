@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.8"
+title: "Strands Tools v0.1.8 リリース解説"
 version: "v0.1.8"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-07-02
 summary: "Playwright を使用したブラウザ操作ツール、Amazon Bedrock での画像生成モデル拡張サポート、エディタツールの @tool デコレータへの移行など、新機能とバグ修正を含むリリース。"

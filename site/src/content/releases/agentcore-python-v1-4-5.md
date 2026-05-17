@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.5"
+title: "AgentCore Python SDK v1.4.5 リリース解説"
 version: "v1.4.5"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-11
 summary: "SessionManager の位置引数の順序を修正し、region_name を位置引数で渡した際に発生する NoRegionError を解消しました。"

@@ -38,6 +38,7 @@ async function main() {
     setOutput('repository', config.github.repository);
     setOutput('owner', config.github.owner);
     setOutput('short_name', config.github.shortName);
+    setOutput('site_id', config.github.siteId);
     setOutput('display_name', config.github.displayName);
 
     // Log release details

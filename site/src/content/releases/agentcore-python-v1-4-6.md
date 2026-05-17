@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.6"
+title: "AgentCore Python SDK v1.4.6 リリース解説"
 version: "v1.4.6"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-12
 summary: "browser_session() に name パラメータを追加し、MemoryClient で boto3_session を指定できるようになりました。また、SELF_MANAGED 設定タイプの処理や API パラメータ名に関する複数のバグ修正が含まれています。"

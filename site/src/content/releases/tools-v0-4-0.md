@@ -1,8 +1,8 @@
 ---
-title: "tools v0.4.0"
+title: "Strands Tools v0.4.0 リリース解説"
 version: "v0.4.0"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-04-08
 summary: "Exa search ツールに deep search モードが追加され、より包括的な検索結果を取得できるようになりました。また、複数のツールでコンソール出力の抑制が正しく機能するようになりました。"

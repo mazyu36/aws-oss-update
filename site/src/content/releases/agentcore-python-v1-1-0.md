@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.1.0"
+title: "AgentCore Python SDK v1.1.0 リリース解説"
 version: "v1.1.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-12-02
 summary: "双方向ストリーミング機能の追加、ミドルウェアデータサポートの強化、WebSocket 依存関係の改善を含む機能更新"

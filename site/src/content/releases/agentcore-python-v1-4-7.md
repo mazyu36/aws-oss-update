@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.7"
+title: "AgentCore Python SDK v1.4.7 リリース解説"
 version: "v1.4.7"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-18
 summary: "A2A と AG-UI プロトコルのサポート、ResourcePolicyClient の追加、イベントメタデータ機能など、大型の機能追加が含まれるリリースです。また、バッチフラッシュ時の agentId メタデータ欠落や snake_case/camelCase の命名規則に関するバグ修正も含まれています。"

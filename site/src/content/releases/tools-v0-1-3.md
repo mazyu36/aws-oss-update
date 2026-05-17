@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.3"
+title: "Strands Tools v0.1.3 リリース解説"
 version: "v0.1.3"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-05-23
 summary: "このリリースでは、nova_reels と think ツールでの console 出力の修正と、mem0 依存関係をオプション化することで Lambda デプロイメントの問題を解決しました。"

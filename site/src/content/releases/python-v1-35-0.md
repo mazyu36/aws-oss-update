@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.35.0"
+title: "Strands Python SDK v1.35.0 リリース解説"
 version: "v1.35.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-04-08
 summary: "Bedrock サービスティアのサポートが追加され、リクエストごとにレイテンシーとコストのトレードオフを制御できるようになりました。また、スライディングウィンドウの会話管理、MCP メタデータ転送、OpenTelemetry スパンのエラーステータスに関するバグ修正が含まれています。"

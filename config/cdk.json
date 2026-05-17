@@ -4,6 +4,7 @@
     "repository": "aws-cdk",
     "displayName": "AWS CDK",
     "shortName": "cdk",
+    "siteId": "cdk",
     "targetBranch": "main"
   },
   "processing": {

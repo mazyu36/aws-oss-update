@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.8.0"
+title: "AgentCore Python SDK v1.8.0 リリース解説"
 version: "v1.8.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-30
 summary: "バッチ評価機能と Config Bundle サポート、On-Behalf-Of トークン交換のサポートが追加されました。"

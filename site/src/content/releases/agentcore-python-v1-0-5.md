@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.5"
+title: "AgentCore Python SDK v1.0.5 リリース解説"
 version: "v1.0.5"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-29
 summary: "このリリースでは、Memory 機能における AWS リージョン解決の改善が含まれています。AWS_REGION 環境変数が正しく認識されるようになり、より柔軟なリージョン設定が可能になりました。"

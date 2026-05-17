@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.4"
+title: "AgentCore Python SDK v1.0.4 リリース解説"
 version: "v1.0.4"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-22
 summary: "Starlette Middleware のサポートを追加し、非同期 LLM コールバックに対応しました。メモリセッションマネージャーで async/await パターンを使用できるようになり、より柔軟なアプリケーション構築が可能になりました。"

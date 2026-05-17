@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.8.0"
+title: "Strands Python SDK v1.8.0 リリース解説"
 version: "v1.8.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-10
 summary: "llama.cpp モデルプロバイダのサポート追加、Bedrock の region-aware モデル ID 対応、マルチエージェントパターンへの kwargs サポート、循環グラフの動作修正など、複数の新機能とバグ修正を含むリリース。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.3"
+title: "AgentCore Python SDK v0.1.3 リリース解説"
 version: "v0.1.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-09-05
 summary: "Memory 機能の大幅な機能拡張と、Strands Agents との統合サポートを追加。Browser ツールのバリデーション強化とバグ修正も含まれます。"

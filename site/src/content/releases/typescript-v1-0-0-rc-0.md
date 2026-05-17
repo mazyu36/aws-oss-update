@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v1.0.0-rc.0"
+title: "Strands TypeScript SDK v1.0.0-rc.0 リリース解説"
 version: "v1.0.0-rc.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "prerelease"
 date: 2026-03-26
 summary: "1.0 リリース候補版。デフォルトモデルを Claude Sonnet 4 に更新、ツールキャンセル機能、ローカルトレースとマルチエージェントトレース、ストリーミングイベントの toJSON() サポートなど多数の新機能を追加。GeminiModel から GoogleModel へのリネーム、モデルインポートパスの変更、Swarm の自己ハンドオフ防止など破壊的変更を含みます。"

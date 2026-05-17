@@ -1,8 +1,8 @@
 ---
-title: "tools v0.4.1"
+title: "Strands Tools v0.4.1 リリース解説"
 version: "v0.4.1"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-04-09
 summary: "Elasticsearch memory ツールに namespace バリデーションを追加し、TOCTOU 脆弱性を修正しました。"

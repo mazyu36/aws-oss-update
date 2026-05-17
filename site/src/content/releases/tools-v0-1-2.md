@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.2"
+title: "Strands Tools v0.1.2 リリース解説"
 version: "v0.1.2"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-05-21
 summary: "ツールの相互運用性を向上し、不要な依存関係を削除。think ツールと use_llm ツールが親エージェントのコンテキストを継承するようになり、load_tool の依存関係チェックが簡素化されました。"

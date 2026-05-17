@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.2"
+title: "Strands Python SDK v0.1.2 リリース解説"
 version: "v0.1.2"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-18
 summary: "トレーシング機能のシリアライゼーション問題と Bedrock モデルプロバイダーのリージョン設定に関する2つの重要なバグ修正を含むリリースです。画像や音声などのバイナリデータを含むトレースが正しく記録されるようになり、AWS_REGION 環境変数が適切に使用されるようになりました。"

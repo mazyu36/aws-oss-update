@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-typescript v0.2.4"
+title: "AgentCore TypeScript SDK v0.2.4 リリース解説"
 version: "v0.2.4"
 repository: "agentcore-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "AgentCore TypeScript SDK"
 releaseType: "stable"
 date: 2026-05-12
 summary: "BedrockAgentCoreApp.run() メソッドでポートとホストのカスタマイズが可能になりました。Python SDK と同様の API で柔軟なサーバー設定ができます。"

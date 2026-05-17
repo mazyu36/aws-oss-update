@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.17"
+title: "Strands Tools v0.2.17 リリース解説"
 version: "v0.2.17"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-12-03
 summary: "python_repl ツールに環境変数による永続化ディレクトリ設定機能を追加し、MongoDB ツールの namespace セキュリティ問題を修正しました。"

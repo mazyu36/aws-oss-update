@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.6.0"
+title: "Strands TypeScript SDK v0.6.0 リリース解説"
 version: "v0.6.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-03-11
 summary: "Swarm/Graph マルチエージェントオーケストレーション、セッション管理機能、ドキュメント引用サポート、Bedrock ガードレールリダクション、エージェントループメトリクス追跡など、多数の新機能が追加されました。MCP タスクがオプトイン方式に変更される破壊的変更を含みます。"

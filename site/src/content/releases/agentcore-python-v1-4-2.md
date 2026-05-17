@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.2"
+title: "AgentCore Python SDK v1.4.2 リリース解説"
 version: "v1.4.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-03
 summary: "バッチメッセージの自動フラッシュ機能の追加、メモリセッションマネージャーのパフォーマンス最適化とバグ修正が含まれます。"

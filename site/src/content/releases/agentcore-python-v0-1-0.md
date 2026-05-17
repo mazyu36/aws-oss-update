@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.0"
+title: "AgentCore Python SDK v0.1.0 リリース解説"
 version: "v0.1.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-07-16
 summary: "Bedrock AgentCore Python SDK の初回リリース。AI エージェントのランタイムフレームワーク、会話管理のためのメモリクライアント、OAuth2 / API キー認証デコレータ、Browser / Code Interpreter ツール統合を提供。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v0.1.5"
+title: "AgentCore Python SDK v0.1.5 リリース解説"
 version: "v0.1.5"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-09-24
 summary: "run メソッドへの kwargs サポート追加により Uvicorn の柔軟な設定が可能に。リクエストヘッダーの許可リスト機能により、カスタムヘッダーを安全にエージェントに渡せるようになりました。"

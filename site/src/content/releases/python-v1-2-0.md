@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.2.0"
+title: "Strands Python SDK v1.2.0 リリース解説"
 version: "v1.2.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-30
 summary: "Amazon SageMaker AI エンドポイントのサポート、MCP の構造化コンテンツ保持機能、および MCP プロンプト管理機能を追加しました。これにより、AWS SageMaker との統合が可能になり、MCP ツールの応答処理がより柔軟になりました。"

@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.5"
+title: "Strands Tools v0.1.5 リリース解説"
 version: "v0.1.5"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-06-09
 summary: "sleep tool と batch tool の追加、memory tool での AWS リージョンカスタマイズサポート、Mem0 tool の設定オプション拡張など、複数の新機能とバグ修正が含まれています。"

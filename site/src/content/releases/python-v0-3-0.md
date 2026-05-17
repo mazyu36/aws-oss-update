@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.3.0"
+title: "Strands Python SDK v0.3.0 リリース解説"
 version: "v0.3.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-11
 summary: "フック機能の本格導入、完全非同期 API への移行、複数のモデルプロバイダーの非同期対応、マルチモーダル入力サポート、Graph マルチエージェントオーケストレーター、Cohere と Writer モデルプロバイダーの追加など、多数の新機能と破壊的変更を含む大規模リリース。"

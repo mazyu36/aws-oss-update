@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.0.0"
+title: "Strands Python SDK v1.0.0 リリース解説"
 version: "v1.0.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-07-15
 summary: "Swarm マルチエージェントオーケストレータの導入、Graph でのマルチモーダル入力サポート、セッション永続化機能、OpenTelemetry エクスポータのカスタマイズ、MCP ツールのページネーション対応など、多数の新機能を追加した初のメジャーリリース。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.39.0"
+title: "Strands Python SDK v1.39.0 リリース解説"
 version: "v1.39.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-05-08
 summary: "Bedrock Mantle エンドポイントへのネイティブ接続、コンテキストウィンドウの自動解決、トークンカウント API のスキップオプション、A2A タスクライフサイクルの完全サポートなど、多数の新機能とバグ修正を含むリリースです。"

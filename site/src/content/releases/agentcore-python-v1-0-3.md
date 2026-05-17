@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.3"
+title: "AgentCore Python SDK v1.0.3 リリース解説"
 version: "v1.0.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-10-16
 summary: "Python 3.10 以下のバージョンとの互換性を改善するバグ修正リリース。NotRequired 型ヒントを Optional に置き換えることで、Python 3.11 未満の環境でも問題なく動作するようになりました。"

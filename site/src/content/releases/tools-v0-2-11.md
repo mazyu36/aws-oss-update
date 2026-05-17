@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.11"
+title: "Strands Tools v0.2.11 リリース解説"
 version: "v0.2.11"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-10-10
 summary: "Elasticsearch メモリバックエンド機能を追加し、ワークフローで重複タスク名がハングアップする問題を修正したリリースです。Amazon Bedrock Titan 埋め込みによるセマンティック検索が可能になりました。"

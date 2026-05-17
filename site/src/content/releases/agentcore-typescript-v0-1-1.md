@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-typescript v0.1.1"
+title: "AgentCore TypeScript SDK v0.1.1 リリース解説"
 version: "v0.1.1"
 repository: "agentcore-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "AgentCore TypeScript SDK"
 releaseType: "stable"
 date: 2025-11-26
 summary: "Vercel AI SDK との統合例を追加し、Browser および CodeInterpreter ツールを活用した実装パターンを提供。ストリーミング処理や Web 自動化など、実践的なサンプルコードが充実。"

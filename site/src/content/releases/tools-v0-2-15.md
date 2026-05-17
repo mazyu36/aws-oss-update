@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.15"
+title: "Strands Tools v0.2.15 リリース解説"
 version: "v0.2.15"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-11-12
 summary: "Workflow Tool において、依存する前のタスクから結果を取得できなかった問題を修正しました。"

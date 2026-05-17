@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.20"
+title: "Strands Tools v0.2.20 リリース解説"
 version: "v0.2.20"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-02-05
 summary: "Browser ツールの PressKeyAction がディスパッチャチェーンに含まれていなかった問題を修正。"

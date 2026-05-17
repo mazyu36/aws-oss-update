@@ -1,8 +1,8 @@
 ---
-title: "tools v0.1.6"
+title: "Strands Tools v0.1.6 リリース解説"
 version: "v0.1.6"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-06-18
 summary: "use_llm と think メタツールにツールフィルタリング機能を追加し、無限再帰を防止。また、batch ツールと Mem0 ツールのバグを修正。"

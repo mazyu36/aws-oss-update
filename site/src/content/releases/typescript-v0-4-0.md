@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.4.0"
+title: "Strands TypeScript SDK v0.4.0 リリース解説"
 version: "v0.4.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-02-25
 summary: "Zod スキーマによる構造化出力、セッション管理ストレージ、Message/ContentBlock のシリアライゼーション、スナップショット API、ストリームイベントの統一ラッパー、マルチエージェントオーケストレーションプリミティブを追加した機能豊富なリリースです。"

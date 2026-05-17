@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.6"
+title: "Strands Python SDK v0.1.6 リリース解説"
 version: "v0.1.6"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-30
 summary: "Bedrock の非ストリーミングサポート、ドキュメント処理機能の拡張、テレメトリー設定の修正など、Python SDK の機能性と信頼性を向上させる重要な更新が含まれています。"

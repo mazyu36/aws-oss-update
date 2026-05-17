@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.27.0"
+title: "Strands Python SDK v1.27.0 リリース解説"
 version: "v1.27.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-02-18
 summary: "フック登録の新しい add_hook メソッド、並行呼び出し制御の concurrent_invocation_mode パラメータ、ツール例外の AfterToolCallEvent への伝播機能が追加されました。また、A2AAgent、Gemini、OpenAI モデルに関する複数のバグが修正されています。"

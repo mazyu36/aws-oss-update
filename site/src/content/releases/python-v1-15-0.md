@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.15.0"
+title: "Strands Python SDK v1.15.0 リリース解説"
 version: "v1.15.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-11-04
 summary: "プロバイダ非依存のキャッシング機能、マルチエージェントのセッション永続化、非同期ストリーミング対応など、重要な新機能とバグ修正を含むメジャーアップデート。"

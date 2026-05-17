@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.34.1"
+title: "Strands Python SDK v1.34.1 リリース解説"
 version: "v1.34.1"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-04-01
 summary: "コンテキストウィンドウのトークン数を追跡する新機能と、テレメトリ関連のバグ修正が含まれます。"

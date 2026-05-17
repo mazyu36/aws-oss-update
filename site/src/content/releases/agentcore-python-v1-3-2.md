@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.3.2"
+title: "AgentCore Python SDK v1.3.2 リリース解説"
 version: "v1.3.2"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-23
 summary: "Claude 4.6+ モデルでの LTM 取得時の prefill エラー修正と、コンテキストタグのカスタマイズ機能を追加しました。"

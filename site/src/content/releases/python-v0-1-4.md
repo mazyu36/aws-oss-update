@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v0.1.4"
+title: "Strands Python SDK v0.1.4 リリース解説"
 version: "v0.1.4"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-05-23
 summary: "OpenAI モデルプロバイダーの追加、LiteLLM の usage キャプチャ修正、Bedrock の user agent 統合改善、非 ASCII 文字のテレメトリサポート強化などを含むリリースです。"

@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.3.3"
+title: "AgentCore Python SDK v1.3.3 リリース解説"
 version: "v1.3.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-02-27
 summary: "非同期ハンドラーを専用ワーカーイベントループで実行するように改善し、ヘルスチェックの安定性を向上。また、list_events API の max_results パラメータを修正しました。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.4.0"
+title: "Strands Python SDK v1.4.0 リリース解説"
 version: "v1.4.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-08-08
 summary: "Agent-to-Agent サーバーのカスタマイズ可能なリクエストハンドラー、MCP トレーシングコンテキスト伝播の修正、max_tokens 後の tool_use コンテンツブロックの検証、structured_output での会話履歴の変更防止などの機能とバグ修正を含むリリース。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.1.0"
+title: "Strands TypeScript SDK v0.1.0 リリース解説"
 version: "v0.1.0"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2025-12-03
 summary: "Strands Agents TypeScript SDK の初回リリース。"

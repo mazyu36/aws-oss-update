@@ -1,8 +1,8 @@
 ---
-title: "tools v0.5.1"
+title: "Strands Tools v0.5.1 リリース解説"
 version: "v0.5.1"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2026-04-22
 summary: "Exa ツールに highlights パラメータ、max_age_hours パラメータ、instant 検索タイプ、新しいカテゴリ（research paper、people）が追加されました。"

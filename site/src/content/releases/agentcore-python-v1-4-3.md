@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.4.3"
+title: "AgentCore Python SDK v1.4.3 リリース解説"
 version: "v1.4.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-04
 summary: "エージェントステートイベントのバッファリング機能を追加し、create_event API 呼び出しを最大 60% 削減するパフォーマンス最適化が含まれます。"

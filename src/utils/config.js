@@ -21,6 +21,7 @@ export function loadConfig() {
       repository: process.env.STRANDS_REPO || rawConfig.github.repository,
       displayName: rawConfig.github.displayName,
       shortName: rawConfig.github.shortName,
+      siteId: rawConfig.github.siteId,
       targetBranch: process.env.GITHUB_TARGET_BRANCH || rawConfig.github.targetBranch,
       token: process.env.GITHUB_TOKEN || ''
     },

@@ -1,8 +1,8 @@
 ---
-title: "sdk-typescript v0.2.2"
+title: "Strands TypeScript SDK v0.2.2 リリース解説"
 version: "v0.2.2"
 repository: "sdk-typescript"
-repositoryDisplayName: "TypeScript SDK"
+repositoryDisplayName: "Strands TypeScript SDK"
 releaseType: "stable"
 date: 2026-02-11
 summary: "Anthropic モデルプロバイダーの追加、Bedrock API キー認証のサポート、Gemini のマルチメディアコンテンツ対応、レート制限エラーの新クラス追加、フックシステムの拡張など、多数の新機能が含まれています。"

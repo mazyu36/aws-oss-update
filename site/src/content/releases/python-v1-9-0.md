@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.9.0"
+title: "Strands Python SDK v1.9.0 リリース解説"
 version: "v1.9.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-09-17
 summary: "キャッシュ使用量メトリクスの追加、Swarm のエントリーポイント設定機能、Bedrock の redactedContent サポート、MCP クライアントの安定性向上など、テレメトリと複数エージェント機能の大幅な改善が含まれています。"

@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.34.0"
+title: "Strands Python SDK v1.34.0 リリース解説"
 version: "v1.34.0"
-repository: "python"
-repositoryDisplayName: "Python SDK"
+repository: "sdk-python"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2026-03-31
 summary: "AgentAsTool によるマルチエージェント構成の簡素化、サーバーサイド会話管理のサポート、OpenAI Responses API のビルトインツール対応、MCP elicitation エラーハンドリングなど、多数の新機能を追加しました。"

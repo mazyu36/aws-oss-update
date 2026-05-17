@@ -1,8 +1,8 @@
 ---
-title: "sdk-python v1.14.0"
+title: "Strands Python SDK v1.14.0 リリース解説"
 version: "v1.14.0"
 repository: "sdk-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "Strands Python SDK"
 releaseType: "stable"
 date: 2025-10-29
 summary: "Agentic Loop による Structured Output、割り込み機能 (Interrupts) の強化、MCP 接続のマネージド化、Agent Config ファイルサポートなど、Agent の機能性と開発体験を大幅に向上させる主要機能を追加。"

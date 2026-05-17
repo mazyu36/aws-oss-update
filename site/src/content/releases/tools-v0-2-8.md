@@ -1,8 +1,8 @@
 ---
-title: "tools v0.2.8"
+title: "Strands Tools v0.2.8 リリース解説"
 version: "v0.2.8"
 repository: "tools"
-repositoryDisplayName: "Tools"
+repositoryDisplayName: "Strands Tools"
 releaseType: "stable"
 date: 2025-09-17
 summary: "Knowledge Base Retrieve ツールの S3 URI サポート強化と、Mem0 Memory ツールのデフォルト設定時の環境変数対応を追加したバグ修正リリース。"

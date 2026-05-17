@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.6.3"
+title: "AgentCore Python SDK v1.6.3 リリース解説"
 version: "v1.6.3"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-04-16
 summary: "SSRF 脆弱性の修正: 悪意のある region パラメータによる API リクエストのリダイレクト攻撃を防止します。CVE-2026-22611 と同じ脆弱性クラスに対応。"

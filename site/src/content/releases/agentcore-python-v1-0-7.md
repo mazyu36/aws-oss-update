@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.0.7"
+title: "AgentCore Python SDK v1.0.7 リリース解説"
 version: "v1.0.7"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2025-11-25
 summary: "Short-Term Memory のメタデータサポートドキュメント追加、OAuth2 トークン取得時のカスタムパラメータ対応、複数ネームスペース からのメモリ取得の並列化によるパフォーマンス向上が含まれています。"

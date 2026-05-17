@@ -1,8 +1,8 @@
 ---
-title: "bedrock-agentcore-sdk-python v1.5.0"
+title: "AgentCore Python SDK v1.5.0 リリース解説"
 version: "v1.5.0"
 repository: "agentcore-python"
-repositoryDisplayName: "Python SDK"
+repositoryDisplayName: "AgentCore Python SDK"
 releaseType: "stable"
 date: 2026-03-30
 summary: "評価機能の大幅強化: OnDemandEvaluationDatasetRunner と Ground Truth サポートを追加。また、Browser と CodeInterpreter に証明書およびエンタープライズポリシーのサポートを追加しました。"
