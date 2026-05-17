@@ -24,15 +24,21 @@ const allMonths = [...new Set(
     const d = new Date(r.data.date);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
   })
-)].sort().reverse();
+)].sort();
 
-// 月を年ごとにグループ化
-const monthsByYear: Record<string, string[]> = {};
-allMonths.forEach(m => {
-  const year = m.split('-')[0];
-  if (!monthsByYear[year]) monthsByYear[year] = [];
-  monthsByYear[year].push(m);
-});
+// 利用可能な月のセット (e.g. {"2024-01", "2024-02", ...})
+const availableMonths = new Set(allMonths);
+
+// 表示する年の範囲（最古から最新まで）
+const years = allMonths.length > 0
+  ? Array.from(
+      { length: parseInt(allMonths[allMonths.length - 1].split('-')[0]) - parseInt(allMonths[0].split('-')[0]) + 1 },
+      (_, i) => parseInt(allMonths[0].split('-')[0]) + i
+    )
+  : [new Date().getFullYear()];
+
+// デフォルト表示年 = 最新
+const defaultYear = years[years.length - 1];
 
 // ページネーション設定
 const INITIAL_DISPLAY_COUNT = 12;
@@ -73,55 +79,49 @@ const LOAD_MORE_COUNT = 12;
         <span class="filter-label">期間:</span>
         <div class="period-filter" id="periodFilter">
           <button class="period-btn active" data-period="all">すべて</button>
-          <div class="period-range">
-            <div class="period-dropdown">
-              <button class="period-dropdown-btn" id="startMonthBtn">
-                <span id="startMonthLabel">開始月</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                </svg>
-              </button>
-              <div class="period-dropdown-menu" id="startMonthMenu">
-                {Object.entries(monthsByYear).map(([year, months]) => (
-                  <div class="period-year-group">
-                    <span class="period-year-label">{year}年</span>
-                    <div class="period-months">
-                      {months.map(m => (
-                        <button class="period-month-btn start-month-btn" data-month={m}>
-                          {parseInt(m.split('-')[1])}月
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          <div class="period-picker">
+            <button class="period-picker-btn" id="periodPickerBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+              <span id="periodPickerLabel">期間を選択</span>
+              <svg class="period-picker-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="period-picker-popup" id="periodPickerPopup" role="dialog" aria-label="期間を選択">
+              <div class="period-picker-header">
+                <button class="period-picker-nav" id="periodPickerPrevYear" type="button" aria-label="前の年">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <span class="period-picker-year" id="periodPickerYear">{defaultYear}年</span>
+                <button class="period-picker-nav" id="periodPickerNextYear" type="button" aria-label="次の年">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="period-picker-grid" id="periodPickerGrid">
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
+                  <button
+                    class="period-picker-month"
+                    type="button"
+                    data-month-num={month}
+                  >
+                    {month}月
+                  </button>
                 ))}
               </div>
-            </div>
-            <span class="period-separator">〜</span>
-            <div class="period-dropdown">
-              <button class="period-dropdown-btn" id="endMonthBtn">
-                <span id="endMonthLabel">終了月</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                  <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                </svg>
-              </button>
-              <div class="period-dropdown-menu" id="endMonthMenu">
-                {Object.entries(monthsByYear).map(([year, months]) => (
-                  <div class="period-year-group">
-                    <span class="period-year-label">{year}年</span>
-                    <div class="period-months">
-                      {months.map(m => (
-                        <button class="period-month-btn end-month-btn" data-month={m}>
-                          {parseInt(m.split('-')[1])}月
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+              <div class="period-picker-footer">
+                <span class="period-picker-hint" id="periodPickerHint">開始月をクリック</span>
+                <button class="period-picker-clear" id="periodPickerClear" type="button">クリア</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <script is:inline define:vars={{ availableMonths: Array.from(availableMonths), years }}>
+        window.__periodPickerData = { availableMonths, years };
+      </script>
       <div class="filter-actions">
         <div class="layout-controls">
           <button class="layout-btn active" id="layoutGrid" aria-label="グリッド表示" title="グリッド表示">
@@ -647,17 +647,6 @@ const LOAD_MORE_COUNT = 12;
     gap: 0.5rem;
   }
 
-  .period-range {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .period-separator {
-    color: var(--color-text-subtle);
-    font-size: 0.85rem;
-  }
-
   .period-btn {
     font-size: 0.8rem;
     padding: 0.4rem 0.75rem;
@@ -680,11 +669,11 @@ const LOAD_MORE_COUNT = 12;
     color: var(--color-bg);
   }
 
-  .period-dropdown {
+  .period-picker {
     position: relative;
   }
 
-  .period-dropdown-btn {
+  .period-picker-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -696,80 +685,174 @@ const LOAD_MORE_COUNT = 12;
     color: var(--color-text-muted);
     cursor: pointer;
     transition: all 0.2s ease;
+    min-width: 180px;
   }
 
-  .period-dropdown-btn:hover {
+  .period-picker-btn:hover {
     border-color: var(--color-accent-dim);
     color: var(--color-text);
   }
 
-  .period-dropdown-btn.active {
+  .period-picker-btn.active {
     border-color: var(--color-accent);
     color: var(--color-accent);
   }
 
-  .period-dropdown-menu {
+  .period-picker-icon {
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: transform 0.2s ease;
+  }
+
+  .period-picker.open .period-picker-icon {
+    transform: rotate(180deg);
+  }
+
+  .period-picker-popup {
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
-    min-width: 200px;
+    width: 280px;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 0.75rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 0.875rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     z-index: 100;
     display: none;
   }
 
-  .period-dropdown-menu.open {
+  .period-picker.open .period-picker-popup {
     display: block;
+    animation: pickerFadeIn 0.15s ease;
   }
 
-  .period-year-group {
-    margin-bottom: 0.75rem;
+  @keyframes pickerFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .period-year-group:last-child {
-    margin-bottom: 0;
-  }
-
-  .period-year-label {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--color-text-subtle);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-  }
-
-  .period-months {
+  .period-picker-header {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .period-month-btn {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.5rem;
-    background: var(--color-bg-elevated);
+  .period-picker-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
     border: 1px solid var(--color-border);
-    border-radius: 4px;
+    border-radius: 6px;
     color: var(--color-text-muted);
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
-  .period-month-btn:hover {
+  .period-picker-nav:hover:not(:disabled) {
+    border-color: var(--color-accent-dim);
+    color: var(--color-accent);
+    background: var(--color-bg-elevated);
+  }
+
+  .period-picker-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .period-picker-year {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+  }
+
+  .period-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .period-picker-month {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.25rem;
+    background: var(--color-bg-elevated);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+  }
+
+  .period-picker-month:hover:not(:disabled):not(.in-range) {
     border-color: var(--color-accent-dim);
     color: var(--color-text);
   }
 
-  .period-month-btn.active {
+  .period-picker-month:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: transparent;
+  }
+
+  .period-picker-month.in-range {
+    background: var(--color-accent-glow);
+    color: var(--color-text);
+  }
+
+  .period-picker-month.range-start,
+  .period-picker-month.range-end,
+  .period-picker-month.selected {
     background: var(--color-accent);
-    border-color: var(--color-accent);
     color: var(--color-bg);
+    font-weight: 600;
+  }
+
+  .period-picker-month.range-start.in-range {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .period-picker-month.range-end.in-range {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .period-picker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .period-picker-hint {
+    font-size: 0.72rem;
+    color: var(--color-text-subtle);
+  }
+
+  .period-picker-clear {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-subtle);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .period-picker-clear:hover {
+    border-color: var(--color-accent-dim);
+    color: var(--color-text);
   }
 
   .filter-actions {
@@ -904,7 +987,7 @@ const LOAD_MORE_COUNT = 12;
       align-self: flex-end;
     }
 
-    .period-dropdown-menu {
+    .period-picker-popup {
       right: 0;
       left: auto;
     }
@@ -970,14 +1053,26 @@ const LOAD_MORE_COUNT = 12;
   const loadAllBtn = document.getElementById('loadAllBtn');
   const displayCountEl = document.getElementById('displayCount');
 
-  // Period dropdown elements
-  const startMonthBtn = document.getElementById('startMonthBtn');
-  const startMonthMenu = document.getElementById('startMonthMenu');
-  const startMonthLabel = document.getElementById('startMonthLabel');
-  const endMonthBtn = document.getElementById('endMonthBtn');
-  const endMonthMenu = document.getElementById('endMonthMenu');
-  const endMonthLabel = document.getElementById('endMonthLabel');
+  // Period picker elements
+  const periodPicker = document.querySelector('.period-picker') as HTMLElement | null;
+  const periodPickerBtn = document.getElementById('periodPickerBtn');
+  const periodPickerLabel = document.getElementById('periodPickerLabel');
+  const periodPickerPopup = document.getElementById('periodPickerPopup');
+  const periodPickerYearLabel = document.getElementById('periodPickerYear');
+  const periodPickerPrevYear = document.getElementById('periodPickerPrevYear') as HTMLButtonElement | null;
+  const periodPickerNextYear = document.getElementById('periodPickerNextYear') as HTMLButtonElement | null;
+  const periodPickerHint = document.getElementById('periodPickerHint');
+  const periodPickerClear = document.getElementById('periodPickerClear');
+  const periodPickerMonths = document.querySelectorAll<HTMLButtonElement>('.period-picker-month');
   const periodAllBtn = document.querySelector('.period-btn[data-period="all"]');
+
+  const pickerData = (window as any).__periodPickerData as {
+    availableMonths: string[];
+    years: number[];
+  } | undefined;
+  const availableMonths = new Set(pickerData?.availableMonths || []);
+  const pickerYears: number[] = pickerData?.years || [new Date().getFullYear()];
+  let currentPickerYear = pickerYears[pickerYears.length - 1];
 
   // Pagination state
   const totalReleases = parseInt(releasesGrid?.getAttribute('data-total') || '0');
@@ -1173,119 +1268,179 @@ const LOAD_MORE_COUNT = 12;
     });
   });
 
-  // Period "All" button
+  function setPeriodPickerOpen(open: boolean) {
+    if (!periodPicker) return;
+    periodPicker.classList.toggle('open', open);
+    periodPickerBtn?.setAttribute('aria-expanded', String(open));
+    if (open) {
+      // 選択済みの開始月があればその年に飛ぶ
+      if (startMonth) {
+        currentPickerYear = parseInt(startMonth.split('-')[0]);
+      }
+      renderPicker();
+    }
+  }
+
+  function closePeriodPicker() {
+    setPeriodPickerOpen(false);
+  }
+
+  function updatePeriodLabel() {
+    if (!periodPickerLabel) return;
+    if (!startMonth && !endMonth) {
+      periodPickerLabel.textContent = '期間を選択';
+      periodPickerBtn?.classList.remove('active');
+    } else if (startMonth && !endMonth) {
+      periodPickerLabel.textContent = `${formatMonth(startMonth)} 〜`;
+      periodPickerBtn?.classList.add('active');
+    } else if (startMonth && endMonth) {
+      const a = startMonth <= endMonth ? startMonth : endMonth;
+      const b = startMonth <= endMonth ? endMonth : startMonth;
+      periodPickerLabel.textContent = a === b ? formatMonth(a) : `${formatMonth(a)} 〜 ${formatMonth(b)}`;
+      periodPickerBtn?.classList.add('active');
+    }
+  }
+
+  function updateHint() {
+    if (!periodPickerHint) return;
+    if (!startMonth) {
+      periodPickerHint.textContent = '開始月をクリック';
+    } else if (!endMonth) {
+      periodPickerHint.textContent = '終了月をクリック';
+    } else {
+      periodPickerHint.textContent = '別の月で再選択できます';
+    }
+  }
+
+  function renderPicker() {
+    if (!periodPickerYearLabel) return;
+    periodPickerYearLabel.textContent = `${currentPickerYear}年`;
+
+    const minYear = pickerYears[0];
+    const maxYear = pickerYears[pickerYears.length - 1];
+    if (periodPickerPrevYear) periodPickerPrevYear.disabled = currentPickerYear <= minYear;
+    if (periodPickerNextYear) periodPickerNextYear.disabled = currentPickerYear >= maxYear;
+
+    const a = startMonth && endMonth ? (startMonth <= endMonth ? startMonth : endMonth) : startMonth;
+    const b = startMonth && endMonth ? (startMonth <= endMonth ? endMonth : startMonth) : null;
+
+    periodPickerMonths.forEach(btn => {
+      const monthNum = parseInt(btn.getAttribute('data-month-num') || '0');
+      const ym = `${currentPickerYear}-${String(monthNum).padStart(2, '0')}`;
+      btn.setAttribute('data-month', ym);
+
+      const isAvailable = availableMonths.has(ym);
+      btn.disabled = !isAvailable;
+
+      btn.classList.remove('selected', 'in-range', 'range-start', 'range-end');
+
+      if (a && !b && ym === a) {
+        btn.classList.add('selected');
+      } else if (a && b) {
+        if (ym === a) btn.classList.add('range-start');
+        if (ym === b) btn.classList.add('range-end');
+        if (ym > a && ym < b) btn.classList.add('in-range');
+        if (ym === a && a !== b) btn.classList.add('in-range');
+        if (ym === b && a !== b) btn.classList.add('in-range');
+      }
+    });
+
+    updateHint();
+  }
+
+  periodPickerBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setPeriodPickerOpen(!periodPicker?.classList.contains('open'));
+  });
+
+  periodPickerPopup?.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+
+  periodPickerPrevYear?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (periodPickerPrevYear.disabled) return;
+    currentPickerYear -= 1;
+    renderPicker();
+  });
+
+  periodPickerNextYear?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (periodPickerNextYear.disabled) return;
+    currentPickerYear += 1;
+    renderPicker();
+  });
+
+  periodPickerMonths.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (btn.disabled) return;
+      const ym = btn.getAttribute('data-month');
+      if (!ym) return;
+
+      // 1) 未選択 → 開始月
+      // 2) 開始のみ → 終了月（クリック先が開始より前なら入れ替えは描画側で）
+      // 3) 範囲確定 → リセットして開始月
+      if (!startMonth || (startMonth && endMonth)) {
+        startMonth = ym;
+        endMonth = null;
+      } else {
+        endMonth = ym;
+      }
+
+      periodAllBtn?.classList.remove('active');
+      renderPicker();
+      updatePeriodLabel();
+      updateFilter();
+    });
+  });
+
+  periodPickerClear?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    startMonth = null;
+    endMonth = null;
+    periodAllBtn?.classList.add('active');
+    updatePeriodLabel();
+    renderPicker();
+    updateFilter();
+  });
+
+  // 「すべて」ボタン
   periodAllBtn?.addEventListener('click', () => {
     startMonth = null;
     endMonth = null;
     periodAllBtn.classList.add('active');
-    startMonthBtn?.classList.remove('active');
-    endMonthBtn?.classList.remove('active');
-    if (startMonthLabel) startMonthLabel.textContent = '開始月';
-    if (endMonthLabel) endMonthLabel.textContent = '終了月';
-    document.querySelectorAll('.period-month-btn').forEach(b => b.classList.remove('active'));
+    updatePeriodLabel();
+    renderPicker();
     updateFilter();
   });
 
-  // Close all dropdowns
-  function closeAllDropdowns() {
-    startMonthMenu?.classList.remove('open');
-    endMonthMenu?.classList.remove('open');
-  }
-
-  // Start month dropdown toggle
-  startMonthBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    endMonthMenu?.classList.remove('open');
-    startMonthMenu?.classList.toggle('open');
-  });
-
-  // End month dropdown toggle
-  endMonthBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    startMonthMenu?.classList.remove('open');
-    endMonthMenu?.classList.toggle('open');
-  });
-
-  // Start month buttons
-  document.querySelectorAll('.start-month-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const month = btn.getAttribute('data-month');
-      if (!month) return;
-
-      // Update active state
-      document.querySelectorAll('.start-month-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      periodAllBtn?.classList.remove('active');
-      startMonthBtn?.classList.add('active');
-
-      // Update label
-      if (startMonthLabel) startMonthLabel.textContent = formatMonth(month);
-
-      // Close dropdown
-      closeAllDropdowns();
-
-      // Update filter
-      startMonth = month;
-      updateFilter();
-    });
-  });
-
-  // End month buttons
-  document.querySelectorAll('.end-month-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const month = btn.getAttribute('data-month');
-      if (!month) return;
-
-      // Update active state
-      document.querySelectorAll('.end-month-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      periodAllBtn?.classList.remove('active');
-      endMonthBtn?.classList.add('active');
-
-      // Update label
-      if (endMonthLabel) endMonthLabel.textContent = formatMonth(month);
-
-      // Close dropdown
-      closeAllDropdowns();
-
-      // Update filter
-      endMonth = month;
-      updateFilter();
-    });
-  });
-
-  // Close dropdown when clicking outside
+  // 外側クリックで閉じる
   document.addEventListener('click', () => {
-    closeAllDropdowns();
+    closePeriodPicker();
   });
 
-  // Clear filter button
+  // クリアフィルター
   clearFilterBtn?.addEventListener('click', () => {
     selectedRepo = null;
     startMonth = null;
     endMonth = null;
 
-    // Reset repo tabs
     document.querySelectorAll('.repo-tab').forEach(b => b.classList.remove('active'));
     document.querySelector('.repo-tab[data-repo="all"]')?.classList.add('active');
 
-    // Reset period
     periodAllBtn?.classList.add('active');
-    startMonthBtn?.classList.remove('active');
-    endMonthBtn?.classList.remove('active');
-    if (startMonthLabel) startMonthLabel.textContent = '開始月';
-    if (endMonthLabel) endMonthLabel.textContent = '終了月';
-    document.querySelectorAll('.period-month-btn').forEach(b => b.classList.remove('active'));
-
+    updatePeriodLabel();
+    renderPicker();
     updateFilter();
   });
 
-  // Close dropdown on escape
+  // Escape で閉じる
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeAllDropdowns();
+      closePeriodPicker();
     }
   });
+
+  renderPicker();
 </script>
